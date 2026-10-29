@@ -64,7 +64,7 @@ publishes some changes late. The copy must be:
 | Observability | Run table, per-entity counters, JSON logs with `run_id`, per-record ledger | `metrics.py`, `logging_config.py` |
 | Reconciliation | 14 automated checks incl. comparison with the generator's expected results | `reporting.py`, `sql/` |
 | Mock API | Pagination, auth, rate limits, 429/5xx/timeouts/malformed/schema faults, late data | `mock_api/` |
-| Tests | 129 tests (unit + integration on real PostgreSQL), 90% coverage | `tests/` |
+| Tests | 130 tests (unit + integration on real PostgreSQL), 90% coverage | `tests/` |
 
 **Delivery guarantee (stated precisely):** extraction is *at-least-once* (a
 page may be fetched again after a failure or by a lookback), and publishing is
@@ -250,7 +250,7 @@ pipeline, `MOCK_*` for the mock API).
 ## 8. Testing
 
 ```bash
-uv run pytest                     # 129 tests: unit + integration (needs PostgreSQL)
+uv run pytest                     # 130 tests: unit + integration (needs PostgreSQL)
 uv run pytest tests/unit          # pure logic only, no database needed (97 tests)
 uv run pytest --cov               # with coverage report
 uv run ruff check . && uv run ruff format --check .
@@ -263,7 +263,7 @@ uv run ruff check . && uv run ruff format --check .
   unreachable, integration tests are **skipped** with a clear message.
 * No test touches the internet or real credentials: the mock API runs
   in-process (or on a random local port for the real-timeout test).
-* Latest run: **129 passed, 90% line+branch coverage** ([reports/test_results.txt](reports/test_results.txt)).
+* Latest run (fresh clone, `uv sync --frozen`): **130 passed, 90% line+branch coverage** ([reports/test_results.txt](reports/test_results.txt)).
   The percentage shows which lines ran; it does **not** prove they are
   correct. Correctness comes from the assertions (e.g. comparing the target
   tables with the generator's oracle after a crash-and-restart).

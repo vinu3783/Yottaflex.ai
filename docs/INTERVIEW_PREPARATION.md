@@ -61,7 +61,7 @@ Suggested reading order: 1 → 4 → 9 → 7 → 8 → 14 → 15, then the rest.
 4. **Code:** server: `mock_api/app.py:list_records` (bisect on `(ts, id)`); client: `pipeline._ingest_entity` (uses `next_cursor`), `checkpoint.Cursor`.
 5. **Snippet:**
    ```python
-   start = bisect.bisect_right(index.keys, (after_ts, after_id))   # strictly after
+   start = bisect.bisect_right(index.keys, (after_ts, after_id))  # strictly after
    rows = index.rows[start : start + limit]
    ```
 6. **Mistakes:** `WHERE updated_at > :last_ts` (loses ties); OFFSET (unstable); trusting the server never to repeat a cursor.
@@ -77,7 +77,9 @@ Suggested reading order: 1 → 4 → 9 → 7 → 8 → 14 → 15, then the rest.
 5. **Snippet:**
    ```python
    if status == 429:
-       return RateLimitedError("rate limited", retry_after=parse_retry_after(resp.headers.get("Retry-After")))
+       return RateLimitedError(
+           "rate limited", retry_after=parse_retry_after(resp.headers.get("Retry-After"))
+       )
    ```
 6. **Mistakes:** retrying 429 immediately; ignoring Retry-After; waiting for ever when Retry-After is huge.
 7. **Here:** throttle proactively, honour Retry-After as a minimum, cap it (`max_retry_after_seconds`).
@@ -210,8 +212,11 @@ Suggested reading order: 1 → 4 → 9 → 7 → 8 → 14 → 15, then the rest.
 4. **Code:** `models.py` (constraints/indexes), `pipeline._process_page` (`with self.engine.begin()`).
 5. **Snippet:**
    ```python
-   with self.engine.begin() as conn:        # BEGIN
-       publish(...); quarantine(...); ckpt.advance(...); tracker.save_entity(...)
+   with self.engine.begin() as conn:  # BEGIN
+       publish(...)
+       quarantine(...)
+       ckpt.advance(...)
+       tracker.save_entity(...)
    # COMMIT here, or ROLLBACK on any exception
    ```
 6. **Mistakes:** relying only on application checks; autocommit per statement; missing indexes on lookup columns.

@@ -130,7 +130,7 @@ ingest run --since 2000-01-01T00:00:00Z | grep -E '"records_(inserted|updated|du
 
 ## 8. Tests and failure recovery (1-2 min)
 
-**Say:** "129 tests: unit tests for pure logic and integration tests on a real
+**Say:** "130 tests: unit tests for pure logic and integration tests on a real
 Postgres. The important ones break things on purpose: kill the process inside
 page 2's transaction, make page 3 fail permanently, drop a required field, then
 restart and compare the database to a clean run."
@@ -141,7 +141,7 @@ restart and compare the database to a clean run."
 ```bash
 uv run pytest -q            # ~10 s
 ```
-**Point out:** 129 passed; coverage 90%, and the limits of what coverage proves.
+**Point out:** 130 passed; coverage 90%, and the limits of what coverage proves.
 
 **Likely question:** *"How do you know tests don't depend on each other?"* → truncation per test, ran the suite twice.
 

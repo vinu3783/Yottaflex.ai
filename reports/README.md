@@ -6,7 +6,7 @@ PostgreSQL 16.15). Nothing was edited by hand. Regenerate with the commands show
 
 | File | Produced by | What it shows |
 |---|---|---|
-| `test_results.txt` | `uv run pytest --cov` | 129 tests passing + line/branch coverage per module |
+| `test_results.txt` | `uv run pytest --cov` | 130 tests passing + line/branch coverage per module (run from a fresh clone) |
 | `demo_console.txt` | `scripts/demo.sh` | Console output of the full demo (initial load, faults, backfill, rerun) |
 | `demo/00_dataset_manifest.json` | `ingest generate-data` | Source rows per phase, expected target counts, expected quarantine by code |
 | `demo/01_run_initial.*` | run 1 | Initial load summary (`.json`) and structured JSON logs (`.log`) |

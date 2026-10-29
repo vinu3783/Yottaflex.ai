@@ -402,7 +402,7 @@ to be spoken aloud in 30-60 seconds.
 
 **Failure mode:** tests depend on leftover state.
 
-**Mitigation:** schema rebuilt from the migration per session; all tables truncated before each test; suite run twice in a row to confirm (129/129 both times).
+**Mitigation:** schema rebuilt from the migration per session; all tables truncated before each test; suite run twice in a row to confirm (130/130 both times, plus once more from a fresh clone).
 
 **Interview explanation:** "I test pure logic with fast unit tests, and everything stateful against a real Postgres, because the bugs that matter in pipelines live in transactions and constraints. My strongest tests kill the run at a specific point, restart it, and compare the database with what a clean run produces. Coverage is 90%, but I treat that as 'which lines ran', not proof. The assertions are what prove behaviour."
 
