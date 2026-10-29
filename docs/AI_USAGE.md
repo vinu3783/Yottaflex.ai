@@ -15,7 +15,7 @@ All prompts are in [../prompt-history/](../prompt-history/).
 
 ## Part A: What the AI assistant did
 
-**Tool:** Claude Code (VS Code extension), model Claude Opus 5.5, one session, two prompts.
+**Tool:** Claude Code (VS Code extension), model Claude Opus 5.5, one session, six prompts (two for the build, four about the disclosure checklist).
 
 **Level of reliance: heavy.** After the specification prompt, the assistant
 designed, implemented, tested and documented the project largely
