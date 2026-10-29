@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Local configuration and secrets - never commit real values
+.env
+.env.*
+!.env.example
+
+# Generated data (regenerate with `ingest generate-data`)
+data/generated/
+*.jsonl.gz
+
+# Reports: only curated evidence files are committed (see reports/README.md)
+reports/tmp/
+
+# OS / editor noise (the external drive used during development is exFAT,
+# which creates AppleDouble "._*" files)
+.DS_Store
+._*
+.idea/
+.vscode/
+*.swp
