@@ -102,7 +102,10 @@ def _upsert_orders(conn: Connection, rows: list[dict]) -> int:
         # newer version wins - never let an older replay overwrite newer state
         where=orders.c.source_updated_at < ex.source_updated_at,
     )
-    return conn.execute(stmt).rowcount
+    # Count via RETURNING: with multi-row VALUES SQLAlchemy may batch the statement
+    # ("insertmanyvalues"), and then cursor.rowcount is -1, not the rows affected.
+    # A row skipped by the WHERE guard returns nothing.
+    return len(conn.execute(stmt.returning(orders.c.order_id)).all())
 
 
 def _existing_orders(conn: Connection, keys: list[str]) -> dict[str, tuple[datetime, str]]:
@@ -244,7 +247,7 @@ def _publish_events_batch(
             .values(new_rows)
             .on_conflict_do_nothing(index_elements=[order_events.c.event_id])
         )
-        out.rows_written += conn.execute(stmt).rowcount
+        out.rows_written += len(conn.execute(stmt.returning(order_events.c.event_id)).all())
 
 
 PUBLISHERS = {"orders": publish_orders, "order_events": publish_events}
