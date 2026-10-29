@@ -45,6 +45,22 @@ def cmd_db_upgrade(args: argparse.Namespace, settings: PipelineSettings) -> int:
     return 0
 
 
+def cmd_db_reset(args: argparse.Namespace, settings: PipelineSettings) -> int:
+    """Development helper: drop every table and re-apply migrations."""
+    if not args.yes:
+        print("refusing to drop the schema without --yes", file=sys.stderr)
+        return 2
+    from sqlalchemy import text
+
+    engine = make_engine(settings.database_url_value())
+    with engine.begin() as conn:
+        conn.execute(text("DROP SCHEMA public CASCADE; CREATE SCHEMA public;"))
+    engine.dispose()
+    run_migrations(settings.database_url_value())
+    print("database schema dropped and re-created at head")
+    return 0
+
+
 def cmd_generate(args: argparse.Namespace, settings: PipelineSettings) -> int:
     from .datagen import generate, write_dataset
 
@@ -219,6 +235,9 @@ def build_parser() -> argparse.ArgumentParser:
     sub = p.add_subparsers(dest="command", required=True)
 
     sub.add_parser("db-upgrade", help="apply database migrations").set_defaults(fn=cmd_db_upgrade)
+    dr = sub.add_parser("db-reset", help="DEV ONLY: drop all tables and re-run migrations")
+    dr.add_argument("--yes", action="store_true")
+    dr.set_defaults(fn=cmd_db_reset)
 
     g = sub.add_parser("generate-data", help="generate a deterministic source dataset")
     g.add_argument("--out", default="data/generated/review")
