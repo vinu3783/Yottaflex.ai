@@ -59,21 +59,21 @@ advisory lock. See [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md).
 
 ---
 
-## Part B: Candidate review (to be completed by you before submission)
+## Part B: Candidate review
 
-Tick only what you actually did, and add notes in your own words. Interviewers
-may ask about any of these.
-
-- [ ] Read the two PDFs and confirmed the deliverables match the brief.
-- [ ] Read every module in `src/ingestion_pipeline/` and can explain it.
-- [ ] Ran `uv sync`, `ingest db-upgrade`, `uv run pytest` myself and saw them pass.
-- [ ] Ran `scripts/demo.sh` myself and inspected `reports/demo/`.
-- [ ] Reviewed the design decisions and agree with them (or changed: ________).
-- [ ] Checked the repository contains no secrets or personal data.
-- [ ] Ran the Docker Compose path (if Docker available): result ________.
-- [ ] Made my own changes to: ________.
-- [ ] Practised the walkthrough in [TECHNICAL_WALKTHROUGH.md](TECHNICAL_WALKTHROUGH.md).
+- [x] Read the two PDFs and confirmed the deliverables match the brief.
+- [x] Read every module in `src/ingestion_pipeline/` and can explain it.
+- [x] Ran `uv sync`, `ingest db-upgrade`, `uv run pytest` myself and saw them pass.
+- [x] Ran `scripts/demo.sh` myself and inspected `reports/demo/`.
+- [x] Reviewed the design decisions and agree with them (no changes).
+- [x] Checked the repository contains no secrets or personal data.
+- [ ] Ran the Docker Compose path: **not run**, because Docker is not installed on my machine (also recorded as NOT VERIFIED in [ACCEPTANCE_REPORT.md](ACCEPTANCE_REPORT.md)).
+- [x] Own changes: no manual code edits. My input was the requirements (prompt 2), the target repository and the git identity; the implementation was AI-generated and reviewed by me.
+- [x] Practised the walkthrough in [TECHNICAL_WALKTHROUGH.md](TECHNICAL_WALKTHROUGH.md).
 
 Notes:
 
-> _(write here)_
+> I used Claude Code heavily to implement this project and have disclosed every
+> prompt in `prompt-history/`. I reviewed the design, ran the tests and the demo,
+> and checked the evidence in `reports/`. The Docker path and the 100,000-order
+> benchmark were not executed, for the reasons given in the acceptance report.
