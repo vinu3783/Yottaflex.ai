@@ -1,0 +1,103 @@
+
+[1m== reset database + generate dataset[0m
+{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.schemas"}
+{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.tables"}
+{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.types"}
+{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.constraints"}
+{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.defaults"}
+{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.comments"}
+{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.ext.checkconstraint_byname"}
+{"ts": "2026-10-29T15:35:39.757+00:00", "level": "INFO", "logger": "alembic.runtime.migration", "event": "Context impl PostgresqlImpl."}
+{"ts": "2026-10-29T15:35:39.757+00:00", "level": "INFO", "logger": "alembic.runtime.migration", "event": "Will assume transactional DDL."}
+{"ts": "2026-10-29T15:35:39.766+00:00", "level": "INFO", "logger": "alembic.runtime.migration", "event": "Running upgrade  -> 0001, initial schema"}
+database schema dropped and re-created at head
+
+[1m== start mock API (phase 1)[0m
+{"status":"ok","phase":1,"rows":{"orders":514,"order_events":481}}
+unauthenticated request -> HTTP 401
+
+[1m== run 1: initial incremental load[0m
+  "status": "succeeded",
+      "records_fetched": 514,
+      "records_inserted": 210,
+      "records_quarantined": 33,
+      "records_fetched": 481,
+      "records_inserted": 471,
+      "records_quarantined": 8,
+
+[1m== release phase 2 and inject faults[0m
+{
+  "phase": 2,
+  "rows": {
+    "orders": 637,
+    "order_events": 597
+  }
+}
+{
+  "rules": 2
+}
+
+[1m== run 2: incremental with lookback (expect retries in the log)[0m
+{"ts": "2026-10-29T15:35:41.888+00:00", "level": "WARNING", "logger": "ingestion_pipeline.api_client", "event": "retrying request", "page": 1, "attempt": 1, "error_category": "source_unavailable", "status_code": 503, "retry_in_seconds": 0.422, "run_id": "c0946249-dae4-4c9b-ab32-0ed0f2f5b828", "entity": "orders"}
+{"ts": "2026-10-29T15:35:42.327+00:00", "level": "WARNING", "logger": "ingestion_pipeline.api_client", "event": "retrying request", "page": 1, "attempt": 2, "error_category": "source_unavailable", "status_code": 503, "retry_in_seconds": 0.386, "run_id": "c0946249-dae4-4c9b-ab32-0ed0f2f5b828", "entity": "orders"}
+{"ts": "2026-10-29T15:35:42.781+00:00", "level": "WARNING", "logger": "ingestion_pipeline.api_client", "event": "retrying request", "page": 1, "attempt": 1, "error_category": "rate_limited", "status_code": 429, "retry_in_seconds": 1.0, "run_id": "c0946249-dae4-4c9b-ab32-0ed0f2f5b828", "entity": "order_events"}
+
+[1m== reconcile after incremental runs (very-late rows still missing)[0m
+wrote reports/demo/03_reconcile_after_incremental.json and reports/demo/03_reconcile_after_incremental.md
+PASS  orders: per-run fetched = inserted+updated+duplicate+stale+quarantined = ledger rows
+PASS  orders: target rows = 'inserted' outcomes (each key inserted once)
+PASS  orders: raw 'ok' records = ledger rows + unprocessed raw records
+PASS  order_events: per-run fetched = inserted+updated+duplicate+stale+quarantined = ledger rows
+PASS  order_events: target rows = 'inserted' outcomes (each key inserted once)
+PASS  order_events: raw 'ok' records = ledger rows + unprocessed raw records
+PASS  referential integrity: every order_event has an order
+PASS  orders: business rules hold in target
+FAIL  oracle: orders target = expected keys and latest valid version
+PASS  oracle: order_events target = expected events
+PASS  oracle: orders quarantine = labelled invalid rows with expected codes
+PASS  oracle: orders first-delivery outcome matches scenario label
+PASS  oracle: order_events quarantine = labelled invalid rows with expected codes
+PASS  oracle: order_events first-delivery outcome matches scenario label
+RESULT: FAIL
+
+[1m== run 3: backfill from 2025-12-29[0m
+      "records_inserted": 2,
+      "records_inserted": 0,
+
+[1m== run 4: rerun - idempotency check[0m
+      "records_inserted": 0,
+      "records_updated": 0,
+      "records_duplicate": 1,
+      "records_inserted": 0,
+      "records_updated": 0,
+      "records_duplicate": 1,
+
+[1m== final reconciliation[0m
+wrote reports/demo/06_reconciliation.json and reports/demo/06_reconciliation.md
+PASS  orders: per-run fetched = inserted+updated+duplicate+stale+quarantined = ledger rows
+PASS  orders: target rows = 'inserted' outcomes (each key inserted once)
+PASS  orders: raw 'ok' records = ledger rows + unprocessed raw records
+PASS  order_events: per-run fetched = inserted+updated+duplicate+stale+quarantined = ledger rows
+PASS  order_events: target rows = 'inserted' outcomes (each key inserted once)
+PASS  order_events: raw 'ok' records = ledger rows + unprocessed raw records
+PASS  referential integrity: every order_event has an order
+PASS  orders: business rules hold in target
+PASS  oracle: orders target = expected keys and latest valid version
+PASS  oracle: order_events target = expected events
+PASS  oracle: orders quarantine = labelled invalid rows with expected codes
+PASS  oracle: orders first-delivery outcome matches scenario label
+PASS  oracle: order_events quarantine = labelled invalid rows with expected codes
+PASS  oracle: order_events first-delivery outcome matches scenario label
+RESULT: PASS
+
+[1m== run list, latest run summary, checkpoints[0m
+run_id                                status     mode        started_at                           secs  http retry  failure
+127ffa1c-19cd-45fc-98fd-54a8cf13056e  succeeded  incremental 2026-10-29T15:35:45.155211+00:00    0.079     2     0  
+6ff67f46-25e0-4597-9754-9f26ce08b234  succeeded  backfill    2026-10-29T15:35:44.683269+00:00     0.18     4     0  
+c0946249-dae4-4c9b-ab32-0ed0f2f5b828  succeeded  incremental 2026-10-29T15:35:41.866901+00:00    1.977     5     3  
+b6f50864-f7c4-4bab-8a48-8665350532c5  succeeded  incremental 2026-10-29T15:35:40.855192+00:00    0.235     3     0  
+
+[1m== sample SQL queries[0m
+wrote reports/demo/08_*.txt
+
+[1m== done - evidence in reports/demo/[0m

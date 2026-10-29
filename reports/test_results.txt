@@ -1,0 +1,51 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.10, pytest-8.4.2, pluggy-1.7.0
+rootdir: /Volumes/VINU/ASSIGNMENTs/Yottafelx/Yottaflex.ai
+configfile: pyproject.toml
+plugins: cov-6.3.0, anyio-4.15.1
+collected 129 items
+
+tests/integration/test_end_to_end.py .....                               [  3%]
+tests/integration/test_failure_recovery.py ............                  [ 13%]
+tests/integration/test_idempotency_and_storage.py ...........            [ 21%]
+tests/integration/test_reconciliation_and_schema.py ....                 [ 24%]
+tests/unit/test_api_client.py ................                           [ 37%]
+tests/unit/test_datagen_and_mock_api.py ...............                  [ 48%]
+tests/unit/test_retry_and_rate_limit.py ..........                       [ 56%]
+tests/unit/test_transformations.py ..............................        [ 79%]
+tests/unit/test_validation.py ..........................                 [100%]
+
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.12.10-final-0 _______________
+
+Name                                          Stmts   Miss Branch BrPart  Cover   Missing
+-----------------------------------------------------------------------------------------
+src/ingestion_pipeline/__init__.py                2      0      0      0   100%
+src/ingestion_pipeline/api_client.py            162      3     22      1    98%   134, 137, 141
+src/ingestion_pipeline/benchmark.py              73     73     14      0     0%   15-185
+src/ingestion_pipeline/checkpoint.py             36      4      6      0    86%   88-91
+src/ingestion_pipeline/cli.py                   192     64     36      4    60%   25-28, 36-38, 43-45, 61-74, 78-90, 94-126, 138, 155, 173-176, 185->188, 195-213, 299
+src/ingestion_pipeline/config.py                 38      1      0      0    97%   71
+src/ingestion_pipeline/datagen.py               307      1     72      3    99%   367->418, 529, 569->583
+src/ingestion_pipeline/db.py                     36      1      4      1    95%   33
+src/ingestion_pipeline/errors.py                 45      0      0      0   100%
+src/ingestion_pipeline/logging_config.py         51      8     14      4    72%   40->42, 42->44, 49-60, 69->71, 72
+src/ingestion_pipeline/metrics.py                62      0      0      0   100%
+src/ingestion_pipeline/mock_api/__init__.py       2      0      0      0   100%
+src/ingestion_pipeline/mock_api/app.py          186      7     46      5    95%   118, 128, 187, 246, 253->280, 257, 278, 285
+src/ingestion_pipeline/mock_api/faults.py        22      0      6      0   100%
+src/ingestion_pipeline/models.py                 22      0      0      0   100%
+src/ingestion_pipeline/pipeline.py              187      6     36      3    96%   108, 169-170, 275, 281-282
+src/ingestion_pipeline/quarantine.py             19      0      6      0   100%
+src/ingestion_pipeline/rate_limiter.py           23      0      6      1    97%   41->exit
+src/ingestion_pipeline/raw_archive.py             9      0      0      0   100%
+src/ingestion_pipeline/reporting.py             143      1     32      1    99%   402
+src/ingestion_pipeline/repository.py             98      1     34      1    98%   171
+src/ingestion_pipeline/retry_policy.py           40      0      6      0   100%
+src/ingestion_pipeline/schemas.py               118      0      2      0   100%
+src/ingestion_pipeline/transformations.py        83      1     32      1    98%   65
+src/ingestion_pipeline/validation.py             61      1     14      1    97%   73
+-----------------------------------------------------------------------------------------
+TOTAL                                          2017    172    388     26    90%
+Coverage XML written to file reports/tmp/coverage.xml
+============================= 129 passed in 12.67s =============================

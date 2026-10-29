@@ -1,0 +1,65 @@
+{
+  "run_id": "6ff67f46-25e0-4597-9754-9f26ce08b234",
+  "status": "succeeded",
+  "failure_category": null,
+  "error_message": null,
+  "stopped_early": false,
+  "duration_seconds": 0.18,
+  "http": {
+    "attempts": 4,
+    "retries": 0,
+    "rate_limited": 0,
+    "server_errors": 0,
+    "timeouts": 0,
+    "transport_errors": 0,
+    "malformed": 0
+  },
+  "entities": {
+    "orders": {
+      "pages_requested": 2,
+      "pages_processed": 2,
+      "records_fetched": 637,
+      "records_valid": 605,
+      "records_inserted": 2,
+      "records_updated": 0,
+      "records_duplicate": 213,
+      "records_stale": 390,
+      "records_quarantined": 32,
+      "unknown_fields": {
+        "loyalty_tier": 2,
+        "sales_channel": 2
+      },
+      "start_cursor": {
+        "params": {
+          "updated_since": "2025-12-29T00:00:00Z"
+        }
+      },
+      "end_cursor": {
+        "source_updated_at": "2026-01-01T14:32:51Z",
+        "source_record_id": "ORDV-000000324"
+      }
+    },
+    "order_events": {
+      "pages_requested": 2,
+      "pages_processed": 2,
+      "records_fetched": 597,
+      "records_valid": 593,
+      "records_inserted": 0,
+      "records_updated": 0,
+      "records_duplicate": 589,
+      "records_stale": 0,
+      "records_quarantined": 8,
+      "unknown_fields": {},
+      "start_cursor": {
+        "params": {
+          "updated_since": "2025-12-29T00:00:00Z"
+        }
+      },
+      "end_cursor": {
+        "source_updated_at": "2026-01-01T14:32:55Z",
+        "source_record_id": "EVTV-000000324"
+      }
+    }
+  },
+  "peak_rss_mb": 66.9
+}

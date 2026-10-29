@@ -1,0 +1,10 @@
+{
+  "order_events": {
+    "source_updated_at": "2026-01-01T14:32:55Z",
+    "source_record_id": "EVTV-000000324"
+  },
+  "orders": {
+    "source_updated_at": "2026-01-01T14:32:51Z",
+    "source_record_id": "ORDV-000000324"
+  }
+}

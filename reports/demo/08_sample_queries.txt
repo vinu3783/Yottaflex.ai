@@ -1,0 +1,131 @@
+== 1. Recent runs
+                run_id                |  status   |    mode     |          started_at           | duration_seconds | http_attempts | http_retries | http_rate_limited | http_server_errors | failure_category 
+--------------------------------------+-----------+-------------+-------------------------------+------------------+---------------+--------------+-------------------+--------------------+------------------
+ 127ffa1c-19cd-45fc-98fd-54a8cf13056e | succeeded | incremental | 2026-10-29 15:35:45.155211+00 |            0.079 |             2 |            0 |                 0 |                  0 | 
+ 6ff67f46-25e0-4597-9754-9f26ce08b234 | succeeded | backfill    | 2026-10-29 15:35:44.683269+00 |            0.180 |             4 |            0 |                 0 |                  0 | 
+ c0946249-dae4-4c9b-ab32-0ed0f2f5b828 | succeeded | incremental | 2026-10-29 15:35:41.866901+00 |            1.977 |             5 |            3 |                 1 |                  2 | 
+ b6f50864-f7c4-4bab-8a48-8665350532c5 | succeeded | incremental | 2026-10-29 15:35:40.855192+00 |            0.235 |             3 |            0 |                 0 |                  0 | 
+(4 rows)
+
+== 2. Per-run, per-entity counters (fetched = inserted+updated+duplicate+stale+quarantined)
+          started_at           |    entity    | pages_processed | records_fetched | records_inserted | records_updated | records_duplicate | records_stale | records_quarantined | unexplained 
+-------------------------------+--------------+-----------------+-----------------+------------------+-----------------+-------------------+---------------+---------------------+-------------
+ 2026-10-29 15:35:40.855192+00 | order_events |               1 |             481 |              471 |               0 |                 2 |             0 |                   8 |           0
+ 2026-10-29 15:35:40.855192+00 | orders       |               2 |             514 |              210 |             269 |                 2 |             0 |                  33 |           0
+ 2026-10-29 15:35:41.866901+00 | order_events |               1 |             153 |              116 |               0 |                37 |             0 |                   0 |           0
+ 2026-10-29 15:35:41.866901+00 | orders       |               1 |             163 |                2 |             116 |                36 |             5 |                   4 |           0
+ 2026-10-29 15:35:44.683269+00 | order_events |               2 |             597 |                0 |               0 |               589 |             0 |                   8 |           0
+ 2026-10-29 15:35:44.683269+00 | orders       |               2 |             637 |                2 |               0 |               213 |           390 |                  32 |           0
+ 2026-10-29 15:35:45.155211+00 | order_events |               1 |               1 |                0 |               0 |                 1 |             0 |                   0 |           0
+ 2026-10-29 15:35:45.155211+00 | orders       |               1 |               1 |                0 |               0 |                 1 |             0 |                   0 |           0
+(8 rows)
+
+== 3. Current checkpoints
+    entity    |   cursor_updated_at    | cursor_record_id |             last_run_id              |          updated_at           
+--------------+------------------------+------------------+--------------------------------------+-------------------------------
+ orders       | 2026-01-01 14:32:51+00 | ORDV-000000324   | c0946249-dae4-4c9b-ab32-0ed0f2f5b828 | 2026-10-29 15:35:42.740962+00
+ order_events | 2026-01-01 14:32:55+00 | EVTV-000000324   | c0946249-dae4-4c9b-ab32-0ed0f2f5b828 | 2026-10-29 15:35:43.80503+00
+(2 rows)
+
+== 4. Orders: status distribution and money totals per currency
+ currency | order_status | orders |  total_amount  
+----------+--------------+--------+----------------
+ EUR      | cancelled    |      8 |        5853.29
+ EUR      | delivered    |      7 |        7308.18
+ EUR      | paid         |      4 |        3156.47
+ EUR      | pending      |      7 |        6780.81
+ EUR      | refunded     |      6 |        5476.60
+ EUR      | shipped      |     11 |       13038.97
+ GBP      | cancelled    |      9 |        8341.57
+ GBP      | delivered    |      9 |        7901.26
+ GBP      | paid         |      6 |        4804.33
+ GBP      | pending      |     10 |        7816.32
+ GBP      | refunded     |     13 |        9539.85
+ GBP      | shipped      |      7 |        6198.97
+ INR      | cancelled    |      7 |        5596.26
+ INR      | delivered    |      4 |        2497.94
+ INR      | paid         |      5 |        5691.68
+ INR      | pending      |      8 |        8276.09
+ INR      | refunded     |     13 |       11338.54
+ INR      | shipped      |      6 |        6616.86
+ USD      | cancelled    |     16 |       13580.85
+ USD      | delivered    |     10 |        9183.73
+ USD      | paid         |     22 | 20000016848.95
+ USD      | pending      |      8 |        5889.32
+ USD      | refunded     |     11 |       13367.07
+ USD      | shipped      |      7 |        7349.31
+(24 rows)
+
+== 5. One order with its events in event-time order
+   order_id   | order_status | order_amount | currency |    version     |     event_type     |    event_timestamp     
+--------------+--------------+--------------+----------+----------------+--------------------+------------------------
+ ORD-00000034 | refunded     |      1468.70 | INR      | ORDV-000000098 | payment_authorized | 2025-12-31 04:02:35+00
+ ORD-00000034 | refunded     |      1468.70 | INR      | ORDV-000000098 | order_created      | 2026-01-01 00:16:33+00
+ ORD-00000034 | refunded     |      1468.70 | INR      | ORDV-000000098 | payment_authorized | 2026-01-01 04:02:33+00
+ ORD-00000034 | refunded     |      1468.70 | INR      | ORDV-000000098 | order_shipped      | 2026-01-01 07:52:33+00
+ ORD-00000034 | refunded     |      1468.70 | INR      | ORDV-000000098 | order_delivered    | 2026-01-01 08:42:33+00
+ ORD-00000034 | refunded     |      1468.70 | INR      | ORDV-000000098 | order_refunded     | 2026-01-01 12:12:33+00
+(6 rows)
+
+== 6. Quarantine by entity and error code (distinct source rows, unresolved)
+    entity    |           code           | rows 
+--------------+--------------------------+------
+ order_events | CONFLICTING_DUPLICATE    |    2
+ order_events | INVALID_ENUM             |    2
+ order_events | MISSING_REQUIRED_FIELD   |    2
+ order_events | UNKNOWN_ORDER_ID         |    2
+ orders       | INVALID_ENUM             |    4
+ orders       | INVALID_TIMESTAMP        |    4
+ orders       | MISSING_REQUIRED_FIELD   |    4
+ orders       | INVALID_AMOUNT_PRECISION |    2
+ orders       | INVALID_CURRENCY         |    2
+ orders       | AMOUNT_OUT_OF_RANGE      |    2
+ orders       | INVALID_IDENTIFIER       |    2
+ orders       | NULL_NOT_ALLOWED         |    2
+ orders       | INVALID_TYPE             |    2
+ orders       | TIMESTAMP_ORDER          |    2
+ orders       | NEGATIVE_AMOUNT          |    2
+ orders       | NOT_AN_OBJECT            |    2
+ orders       | CONFLICTING_DUPLICATE    |    2
+ orders       | INVALID_AMOUNT           |    2
+(18 rows)
+
+== 7. Trace quarantined records back to the raw HTTP response
+ quarantine_id | entity | source_record_id |       error_codes        | raw_response_id | page_number | attempt |  request_id  |         retrieved_at          | payload_matches_raw 
+---------------+--------+------------------+--------------------------+-----------------+-------------+---------+--------------+-------------------------------+---------------------
+             1 | orders | ORDV-000000597   | {INVALID_TIMESTAMP}      |               1 |           1 |       1 | req-00000004 | 2026-10-29 15:35:40.884269+00 | t
+             2 | orders | ORDV-000000608   | {AMOUNT_OUT_OF_RANGE}    |               1 |           1 |       1 | req-00000004 | 2026-10-29 15:35:40.884269+00 | t
+             3 | orders | ORDV-000000594   | {INVALID_TYPE}           |               1 |           1 |       1 | req-00000004 | 2026-10-29 15:35:40.884269+00 | t
+             4 | orders | ORDV-000000602   | {MISSING_REQUIRED_FIELD} |               1 |           1 |       1 | req-00000004 | 2026-10-29 15:35:40.884269+00 | t
+             5 | orders | ORDV-000000604   | {INVALID_ENUM}           |               1 |           1 |       1 | req-00000004 | 2026-10-29 15:35:40.884269+00 | t
+             6 | orders |                  | {NOT_AN_OBJECT}          |               1 |           1 |       1 | req-00000004 | 2026-10-29 15:35:40.884269+00 | t
+             7 | orders | ORDV-000000590   | {NEGATIVE_AMOUNT}        |               1 |           1 |       1 | req-00000004 | 2026-10-29 15:35:40.884269+00 | t
+             8 | orders | ORDV-000000593   | {AMOUNT_OUT_OF_RANGE}    |               1 |           1 |       1 | req-00000004 | 2026-10-29 15:35:40.884269+00 | t
+             9 | orders | ORDV-000000598   | {TIMESTAMP_ORDER}        |               1 |           1 |       1 | req-00000004 | 2026-10-29 15:35:40.884269+00 | t
+            10 | orders | ORDV-000000601   | {MISSING_REQUIRED_FIELD} |               1 |           1 |       1 | req-00000004 | 2026-10-29 15:35:40.884269+00 | t
+(10 rows)
+
+== 8. Full history of one source row across runs (lineage ledger)
+ source_record_id |          started_at           |    mode     |  outcome  | raw_response_id 
+------------------+-------------------------------+-------------+-----------+-----------------
+ EVTV-000000029   | 2026-10-29 15:35:40.855192+00 | incremental | inserted  |               3
+ EVTV-000000029   | 2026-10-29 15:35:41.866901+00 | incremental | duplicate |               8
+ EVTV-000000029   | 2026-10-29 15:35:44.683269+00 | backfill    | duplicate |              11
+(3 rows)
+
+== 9. HTTP attempts by outcome (retries, 429s, timeouts are all archived)
+    entity    |  outcome   | status_code | count 
+--------------+------------+-------------+-------
+ order_events | http_error |         429 |     1
+ order_events | ok         |         200 |     5
+ orders       | http_error |         503 |     2
+ orders       | ok         |         200 |     6
+(4 rows)
+
+== 10. Additive schema drift observed per run
+                run_id                | entity |             unknown_fields              
+--------------------------------------+--------+-----------------------------------------
+ b6f50864-f7c4-4bab-8a48-8665350532c5 | orders | {"loyalty_tier": 2, "sales_channel": 2}
+ 6ff67f46-25e0-4597-9754-9f26ce08b234 | orders | {"loyalty_tier": 2, "sales_channel": 2}
+(2 rows)
+

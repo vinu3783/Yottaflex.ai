@@ -1,0 +1,52 @@
+{
+  "dataset_dir": "data/generated/review",
+  "params": {
+    "seed": 42,
+    "order_count": 200,
+    "edge_cases": true,
+    "phases": true
+  },
+  "source_rows": {
+    "orders": 637,
+    "order_events": 597
+  },
+  "source_rows_by_phase": {
+    "orders": {
+      "2": 123,
+      "1": 514
+    },
+    "order_events": {
+      "1": 481,
+      "2": 116
+    }
+  },
+  "expected_target_rows": {
+    "orders": 214,
+    "order_events": 587
+  },
+  "expected_quarantine_by_code": {
+    "order_events": {
+      "CONFLICTING_DUPLICATE": 2,
+      "UNKNOWN_ORDER_ID": 2,
+      "INVALID_ENUM": 2,
+      "MISSING_REQUIRED_FIELD": 2
+    },
+    "orders": {
+      "MISSING_REQUIRED_FIELD": 4,
+      "NULL_NOT_ALLOWED": 2,
+      "INVALID_ENUM": 4,
+      "NEGATIVE_AMOUNT": 2,
+      "INVALID_AMOUNT": 2,
+      "INVALID_AMOUNT_PRECISION": 2,
+      "AMOUNT_OUT_OF_RANGE": 2,
+      "INVALID_TYPE": 2,
+      "INVALID_CURRENCY": 2,
+      "INVALID_TIMESTAMP": 4,
+      "TIMESTAMP_ORDER": 2,
+      "INVALID_IDENTIFIER": 2,
+      "NOT_AN_OBJECT": 2,
+      "CONFLICTING_DUPLICATE": 2
+    }
+  },
+  "labelled_rows": 1234
+}

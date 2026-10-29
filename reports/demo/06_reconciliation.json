@@ -1,0 +1,278 @@
+{
+  "generated_at": "2026-10-29T15:35:45.506430+00:00",
+  "entities": {
+    "orders": {
+      "fetched_per_runs": 1315,
+      "ledger_rows": 1315,
+      "raw_ok_records": 1315,
+      "raw_ok_records_not_processed": 0,
+      "distinct_source_rows_observed": 635,
+      "observed_rows_without_id": 4,
+      "source_rows_delivered_more_than_once": 633,
+      "quarantine_rows": 69,
+      "quarantine_distinct_source_rows": 34,
+      "quarantine_unresolved_distinct": 34,
+      "outcomes": {
+        "inserted": 214,
+        "updated": 385,
+        "duplicate": 252,
+        "stale": 395,
+        "quarantined": 69
+      },
+      "quarantine_by_code": {
+        "AMOUNT_OUT_OF_RANGE": 2,
+        "CONFLICTING_DUPLICATE": 2,
+        "INVALID_AMOUNT": 2,
+        "INVALID_AMOUNT_PRECISION": 2,
+        "INVALID_CURRENCY": 2,
+        "INVALID_ENUM": 4,
+        "INVALID_IDENTIFIER": 2,
+        "INVALID_TIMESTAMP": 4,
+        "INVALID_TYPE": 2,
+        "MISSING_REQUIRED_FIELD": 4,
+        "NEGATIVE_AMOUNT": 2,
+        "NOT_AN_OBJECT": 2,
+        "NULL_NOT_ALLOWED": 2,
+        "TIMESTAMP_ORDER": 2
+      },
+      "target_rows": 214
+    },
+    "order_events": {
+      "fetched_per_runs": 1232,
+      "ledger_rows": 1232,
+      "raw_ok_records": 1232,
+      "raw_ok_records_not_processed": 0,
+      "distinct_source_rows_observed": 597,
+      "observed_rows_without_id": 0,
+      "source_rows_delivered_more_than_once": 597,
+      "quarantine_rows": 16,
+      "quarantine_distinct_source_rows": 8,
+      "quarantine_unresolved_distinct": 8,
+      "outcomes": {
+        "inserted": 587,
+        "updated": 0,
+        "duplicate": 629,
+        "stale": 0,
+        "quarantined": 16
+      },
+      "quarantine_by_code": {
+        "CONFLICTING_DUPLICATE": 2,
+        "INVALID_ENUM": 2,
+        "MISSING_REQUIRED_FIELD": 2,
+        "UNKNOWN_ORDER_ID": 2
+      },
+      "target_rows": 587
+    }
+  },
+  "checkpoints": {
+    "order_events": {
+      "source_updated_at": "2026-01-01T14:32:55Z",
+      "source_record_id": "EVTV-000000324"
+    },
+    "orders": {
+      "source_updated_at": "2026-01-01T14:32:51Z",
+      "source_record_id": "ORDV-000000324"
+    }
+  },
+  "runs": [
+    {
+      "status": "succeeded",
+      "runs": 4,
+      "http_attempts": 14,
+      "retries": 3,
+      "rate_limited": 1,
+      "server_errors": 2,
+      "timeouts": 0,
+      "seconds": 2.471
+    }
+  ],
+  "raw_attempts_by_outcome": {
+    "http_error": 3,
+    "ok": 11
+  },
+  "oracle": {
+    "dataset_dir": "data/generated/review",
+    "manifest": {
+      "expected_quarantine_by_code": {
+        "order_events": {
+          "CONFLICTING_DUPLICATE": 2,
+          "INVALID_ENUM": 2,
+          "MISSING_REQUIRED_FIELD": 2,
+          "UNKNOWN_ORDER_ID": 2
+        },
+        "orders": {
+          "AMOUNT_OUT_OF_RANGE": 2,
+          "CONFLICTING_DUPLICATE": 2,
+          "INVALID_AMOUNT": 2,
+          "INVALID_AMOUNT_PRECISION": 2,
+          "INVALID_CURRENCY": 2,
+          "INVALID_ENUM": 4,
+          "INVALID_IDENTIFIER": 2,
+          "INVALID_TIMESTAMP": 4,
+          "INVALID_TYPE": 2,
+          "MISSING_REQUIRED_FIELD": 4,
+          "NEGATIVE_AMOUNT": 2,
+          "NOT_AN_OBJECT": 2,
+          "NULL_NOT_ALLOWED": 2,
+          "TIMESTAMP_ORDER": 2
+        }
+      },
+      "expected_target_rows": {
+        "order_events": 587,
+        "orders": 214
+      },
+      "labelled_rows": 1234,
+      "params": {
+        "edge_cases": true,
+        "order_count": 200,
+        "phases": true,
+        "seed": 42
+      },
+      "source_rows": {
+        "order_events": 597,
+        "orders": 637
+      },
+      "source_rows_by_phase": {
+        "order_events": {
+          "1": 481,
+          "2": 116
+        },
+        "orders": {
+          "1": 514,
+          "2": 123
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "check": "orders: per-run fetched = inserted+updated+duplicate+stale+quarantined = ledger rows",
+      "status": "PASS",
+      "detail": {
+        "runs_checked": 4,
+        "mismatched_runs": []
+      }
+    },
+    {
+      "check": "orders: target rows = 'inserted' outcomes (each key inserted once)",
+      "status": "PASS",
+      "detail": {
+        "target_rows": 214,
+        "inserted": 214
+      }
+    },
+    {
+      "check": "orders: raw 'ok' records = ledger rows + unprocessed raw records",
+      "status": "PASS",
+      "detail": {
+        "raw_ok_records": 1315,
+        "ledger_rows": 1315,
+        "raw_ok_records_not_processed": 0
+      }
+    },
+    {
+      "check": "order_events: per-run fetched = inserted+updated+duplicate+stale+quarantined = ledger rows",
+      "status": "PASS",
+      "detail": {
+        "runs_checked": 4,
+        "mismatched_runs": []
+      }
+    },
+    {
+      "check": "order_events: target rows = 'inserted' outcomes (each key inserted once)",
+      "status": "PASS",
+      "detail": {
+        "target_rows": 587,
+        "inserted": 587
+      }
+    },
+    {
+      "check": "order_events: raw 'ok' records = ledger rows + unprocessed raw records",
+      "status": "PASS",
+      "detail": {
+        "raw_ok_records": 1232,
+        "ledger_rows": 1232,
+        "raw_ok_records_not_processed": 0
+      }
+    },
+    {
+      "check": "referential integrity: every order_event has an order",
+      "status": "PASS",
+      "detail": {
+        "violations": 0
+      }
+    },
+    {
+      "check": "orders: business rules hold in target",
+      "status": "PASS",
+      "detail": {
+        "violations": 0
+      }
+    },
+    {
+      "check": "oracle: orders target = expected keys and latest valid version",
+      "status": "PASS",
+      "detail": {
+        "expected": 214,
+        "actual": 214,
+        "missing": [],
+        "missing_count": 0,
+        "unexpected": [],
+        "wrong_version": [],
+        "wrong_version_count": 0
+      }
+    },
+    {
+      "check": "oracle: order_events target = expected events",
+      "status": "PASS",
+      "detail": {
+        "expected": 587,
+        "actual": 587,
+        "missing_count": 0,
+        "unexpected": [],
+        "wrong": []
+      }
+    },
+    {
+      "check": "oracle: orders quarantine = labelled invalid rows with expected codes",
+      "status": "PASS",
+      "detail": {
+        "expected": 34,
+        "actual": 34,
+        "missing": [],
+        "unexpected": [],
+        "wrong_code": []
+      }
+    },
+    {
+      "check": "oracle: orders first-delivery outcome matches scenario label",
+      "status": "PASS",
+      "detail": {
+        "labelled_rows_observed": 635,
+        "mismatches": [],
+        "mismatch_count": 0
+      }
+    },
+    {
+      "check": "oracle: order_events quarantine = labelled invalid rows with expected codes",
+      "status": "PASS",
+      "detail": {
+        "expected": 8,
+        "actual": 8,
+        "missing": [],
+        "unexpected": [],
+        "wrong_code": []
+      }
+    },
+    {
+      "check": "oracle: order_events first-delivery outcome matches scenario label",
+      "status": "PASS",
+      "detail": {
+        "labelled_rows_observed": 597,
+        "mismatches": [],
+        "mismatch_count": 0
+      }
+    }
+  ],
+  "result": "PASS"
+}

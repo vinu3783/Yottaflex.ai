@@ -1,0 +1,64 @@
+{
+  "generated_at": "2026-10-29T15:32:53.963568+00:00",
+  "workload": {
+    "orders": 20000,
+    "seed": 7,
+    "page_size": 1000,
+    "source_rows": {
+      "order_events": 57259,
+      "orders": 58959
+    }
+  },
+  "environment": {
+    "platform": "macOS-15.5-arm64-arm-64bit",
+    "machine": "arm64",
+    "cpu_count": 8,
+    "python": "3.12.10",
+    "postgres": "16.15 (Homebrew)",
+    "note": "mock API, pipeline and PostgreSQL all on the same machine"
+  },
+  "results": [
+    {
+      "write_mode": "batch",
+      "records_fetched": 116218,
+      "pages": 117,
+      "http_requests": 117,
+      "retries": 0,
+      "duration_seconds": 25.217,
+      "process_wall_seconds": 25.535,
+      "records_per_second": 4608.7,
+      "rows_written": {
+        "raw_responses": 117,
+        "orders": 20500,
+        "order_events": 56759,
+        "quarantine": 2100,
+        "record_outcomes": 116218
+      },
+      "page_transactions": 117,
+      "peak_rss_mb": 112.2,
+      "reconciliation": "PASS",
+      "postgres_version": "16.15 (Homebrew)"
+    },
+    {
+      "write_mode": "row",
+      "records_fetched": 116218,
+      "pages": 117,
+      "http_requests": 117,
+      "retries": 0,
+      "duration_seconds": 79.143,
+      "process_wall_seconds": 79.532,
+      "records_per_second": 1468.5,
+      "rows_written": {
+        "raw_responses": 117,
+        "orders": 20500,
+        "order_events": 56759,
+        "quarantine": 2100,
+        "record_outcomes": 116218
+      },
+      "page_transactions": 117,
+      "peak_rss_mb": 70.4,
+      "reconciliation": "PASS",
+      "postgres_version": "16.15 (Homebrew)"
+    }
+  ]
+}

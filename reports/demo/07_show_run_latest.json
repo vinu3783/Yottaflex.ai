@@ -1,0 +1,114 @@
+{
+  "run": {
+    "run_id": "127ffa1c-19cd-45fc-98fd-54a8cf13056e",
+    "pipeline_name": "orders_api_ingestion",
+    "pipeline_version": "1.0.0",
+    "status": "succeeded",
+    "mode": "incremental",
+    "source": "http://127.0.0.1:8000",
+    "target": "postgresql+psycopg://pipeline:***@localhost:5432/pipeline",
+    "params": {
+      "since": null,
+      "until": null,
+      "entities": [
+        "orders",
+        "order_events"
+      ],
+      "max_pages": 10000,
+      "page_size": 500,
+      "write_mode": "batch",
+      "lookback_seconds": 3600
+    },
+    "started_at": "2026-10-29T15:35:45.155211+00:00",
+    "finished_at": "2026-10-29T15:35:45.234092+00:00",
+    "duration_seconds": 0.079,
+    "checkpoint_before": {
+      "orders": {
+        "source_record_id": "ORDV-000000324",
+        "source_updated_at": "2026-01-01T14:32:51Z"
+      },
+      "order_events": {
+        "source_record_id": "EVTV-000000324",
+        "source_updated_at": "2026-01-01T14:32:55Z"
+      }
+    },
+    "checkpoint_after": {
+      "orders": {
+        "source_record_id": "ORDV-000000324",
+        "source_updated_at": "2026-01-01T14:32:51Z"
+      },
+      "order_events": {
+        "source_record_id": "EVTV-000000324",
+        "source_updated_at": "2026-01-01T14:32:55Z"
+      }
+    },
+    "http_attempts": 2,
+    "http_retries": 0,
+    "http_rate_limited": 0,
+    "http_server_errors": 0,
+    "http_timeouts": 0,
+    "failure_category": null,
+    "error_message": null
+  },
+  "entities": {
+    "orders": {
+      "pages_requested": 1,
+      "pages_processed": 1,
+      "records_fetched": 1,
+      "records_valid": 1,
+      "records_inserted": 0,
+      "records_updated": 0,
+      "records_duplicate": 1,
+      "records_stale": 0,
+      "records_quarantined": 0,
+      "unknown_fields": {},
+      "start_cursor": {
+        "params": {
+          "updated_since": "2026-01-01T13:32:51Z"
+        }
+      },
+      "end_cursor": {
+        "source_record_id": "ORDV-000000324",
+        "source_updated_at": "2026-01-01T14:32:51Z"
+      },
+      "unexplained_difference": 0
+    },
+    "order_events": {
+      "pages_requested": 1,
+      "pages_processed": 1,
+      "records_fetched": 1,
+      "records_valid": 1,
+      "records_inserted": 0,
+      "records_updated": 0,
+      "records_duplicate": 1,
+      "records_stale": 0,
+      "records_quarantined": 0,
+      "unknown_fields": {},
+      "start_cursor": {
+        "params": {
+          "updated_since": "2026-01-01T13:32:55Z"
+        }
+      },
+      "end_cursor": {
+        "source_record_id": "EVTV-000000324",
+        "source_updated_at": "2026-01-01T14:32:55Z"
+      },
+      "unexplained_difference": 0
+    }
+  },
+  "http_attempts_by_outcome": [
+    {
+      "entity": "order_events",
+      "outcome": "ok",
+      "status_code": 200,
+      "n": 1
+    },
+    {
+      "entity": "orders",
+      "outcome": "ok",
+      "status_code": 200,
+      "n": 1
+    }
+  ],
+  "quarantine_by_code": []
+}

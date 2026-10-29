@@ -1,0 +1,39 @@
+== R1. Runs whose counters do not add up (expect 0 rows)
+ run_id | entity | records_fetched | explained | ledger_rows 
+--------+--------+-----------------+-----------+-------------
+(0 rows)
+
+== R2. Target rows vs inserted outcomes (expect equal per entity)
+    entity    | target_rows | inserted 
+--------------+-------------+----------
+ orders       |         214 |      214
+ order_events |         587 |      587
+(2 rows)
+
+== R3. Raw records that were archived but never processed (crash / breaking change)
+ run_id | entity | page_number | record_count 
+--------+--------+-------------+--------------
+(0 rows)
+
+== R4. Referential integrity: events without an order (expect 0)
+ orphan_events 
+---------------
+             0
+(1 row)
+
+== R5. Every current order version was actually delivered (expect 0)
+ versions_without_delivery 
+---------------------------
+                         0
+(1 row)
+
+== R6. Source rows delivered more than once, and how each delivery was classified
+   outcome   | count 
+-------------+-------
+ duplicate   |   881
+ inserted    |   799
+ quarantined |    81
+ stale       |   395
+ updated     |   385
+(5 rows)
+
