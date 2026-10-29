@@ -35,3 +35,8 @@ reports/tmp/
 .idea/
 .vscode/
 *.swp
+
+# Personal interview-preparation notes (kept locally, not published)
+docs/INTERVIEW_PREPARATION.md
+docs/TECHNICAL_WALKTHROUGH.md
+docs/QUESTIONS_AND_ANSWERS.md

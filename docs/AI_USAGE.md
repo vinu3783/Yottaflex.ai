@@ -67,9 +67,9 @@ advisory lock. See [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md).
 - [x] Ran `scripts/demo.sh` myself and inspected `reports/demo/`.
 - [x] Reviewed the design decisions and agree with them (no changes).
 - [x] Checked the repository contains no secrets or personal data.
-- [x] Docker Compose path: to be run on my Windows machine (Docker Desktop), because Docker is not installed on the Mac used for development. Result: ________ (until filled in, this stays NOT VERIFIED in [ACCEPTANCE_REPORT.md](ACCEPTANCE_REPORT.md)).
+- [x] Checked the Docker Compose instructions and recorded the limitation: Docker was not installed on the Mac used for development, so the Docker image build and Compose startup were not run. Docker Desktop on Windows remains a possible verification path; until actually run there, this stays NOT VERIFIED in [ACCEPTANCE_REPORT.md](ACCEPTANCE_REPORT.md).
 - [x] Own changes: no manual code edits. My input was the requirements (prompt 2), the target repository and the git identity; the implementation was AI-generated and reviewed by me.
-- [x] Practised the walkthrough in [TECHNICAL_WALKTHROUGH.md](TECHNICAL_WALKTHROUGH.md).
+- [x] Practised the project walkthrough.
 
 Notes:
 

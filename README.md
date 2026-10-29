@@ -373,9 +373,6 @@ prompt-history/           every prompt given to the AI assistant
 | [FAILURE_RECOVERY.md](docs/FAILURE_RECOVERY.md) | What happens in each failure, automatic vs manual recovery |
 | [OPERATIONS_RUNBOOK.md](docs/OPERATIONS_RUNBOOK.md) | Exact commands and SQL for operators |
 | [PERFORMANCE_REPORT.md](docs/PERFORMANCE_REPORT.md) | Benchmark method and measured results |
-| [INTERVIEW_PREPARATION.md](docs/INTERVIEW_PREPARATION.md) | Concept handbook tied to this code |
-| [TECHNICAL_WALKTHROUGH.md](docs/TECHNICAL_WALKTHROUGH.md) | 10-15 minute presentation script |
-| [QUESTIONS_AND_ANSWERS.md](docs/QUESTIONS_AND_ANSWERS.md) | 60 project-specific interview questions |
 | [GLOSSARY.md](docs/GLOSSARY.md) | Plain-English definitions |
 | [ACCEPTANCE_REPORT.md](docs/ACCEPTANCE_REPORT.md) | Requirement-by-requirement PASS/FAIL/NOT VERIFIED |
 | [AI_USAGE.md](docs/AI_USAGE.md) | How AI was used and what was verified |

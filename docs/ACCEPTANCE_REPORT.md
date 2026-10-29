@@ -22,7 +22,7 @@ macOS 15.5 arm64, Python 3.12.10.
 | Reporting / reconciliation | **PASS** | [06_reconciliation.md](../reports/demo/06_reconciliation.md): 14/14 checks PASS |
 | Benchmark executes | **PASS** | [benchmark_20k.json](../reports/benchmark_20k.json); re-executed (2,000 orders) from the fresh clone: batch 5,645 rec/s, row 1,526 rec/s, both reconciled |
 | Demo reproducible from fresh clone | **PASS** | record counts of all four demo runs identical to the committed evidence |
-| Docker image build / Compose startup | **NOT VERIFIED** | Docker not installed on the development machine |
+| Docker image build / Compose startup | **NOT VERIFIED** | Not run: Docker is not installed on the Mac used for development. The Dockerfile and Compose configuration were not executed; verify them on a machine with Docker installed. |
 | Git: no secrets, no `.env`, no generated data, no AppleDouble files tracked | **PASS** | `git grep` scan for tokens/keys/paths; `.gitignore`; 89 tracked files |
 
 ## 2. Requirements checklist
@@ -108,9 +108,6 @@ are **transport/HTTP faults** injected with `mock-admin set-faults`.
 | ARCHITECTURE (components, flows, transactions, failure propagation, tracing, Mermaid architecture + sequence diagrams, 5-question review per component) | PASS |
 | DATA_DICTIONARY (every table/column, grain, keys, rules, count semantics, tracing) | PASS |
 | DESIGN_DECISIONS (17 ADRs, full template) | PASS |
-| INTERVIEW_PREPARATION (22 concepts × 8 parts) | PASS |
-| TECHNICAL_WALKTHROUGH (10 sections with say/show/run/point out/trade-off/questions) | PASS |
-| QUESTIONS_AND_ANSWERS (60 questions, 12 groups, all required scenarios) | PASS |
 | FAILURE_RECOVERY + OPERATIONS_RUNBOOK (automatic vs manual, exact commands and SQL) | PASS |
 | PERFORMANCE_REPORT (measured only; unmeasured items marked) | PASS |
 | GLOSSARY (all requested terms) | PASS |

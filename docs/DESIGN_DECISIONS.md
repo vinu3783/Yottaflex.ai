@@ -450,7 +450,7 @@ to be spoken aloud in 30-60 seconds.
 
 **Failure mode:** volume grows by orders of magnitude.
 
-**Mitigation:** see Q&A "10 million records a day" ([QUESTIONS_AND_ANSWERS.md](QUESTIONS_AND_ANSWERS.md)): partition, parallelise, move raw to object storage, consider a warehouse target. Each is a separate, measurable step.
+**Mitigation:** for much larger volumes (e.g. 10 million records a day): partition, parallelise, move raw to object storage, consider a warehouse target. Each is a separate, measurable step.
 
 **Interview explanation:** "I deliberately didn't add Kafka or Airflow. The hard problems here are correctness problems: checkpoints, idempotency, late data. Postgres transactions solve those. Adding distributed systems would give me more things that can fail and that a reviewer has to run, without making the data more correct. The code is structured so a scheduler or object storage can be plugged in later."
 
