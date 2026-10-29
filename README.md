@@ -219,6 +219,11 @@ docker compose run --rm pipeline ingest run   # incremental run picks up phase 2
 docker compose down -v                        # remove containers and the volume
 ```
 
+**Windows:** install Docker Desktop (WSL 2 backend) and run the same commands
+in PowerShell. `.gitattributes` keeps LF line endings so the shell scripts work
+inside the containers. To run the full demo on Windows, use the container:
+`docker compose run --rm pipeline bash scripts/demo.sh` (it wipes the `pipeline` database).
+
 ## 7. Command reference
 
 | Command | Purpose |

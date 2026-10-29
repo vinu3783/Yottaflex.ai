@@ -1,0 +1,5 @@
+# Keep LF line endings on every platform (incl. Windows checkouts), so shell
+# scripts and the Dockerfile work inside Linux containers.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
