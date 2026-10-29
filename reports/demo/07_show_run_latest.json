@@ -1,6 +1,6 @@
 {
   "run": {
-    "run_id": "127ffa1c-19cd-45fc-98fd-54a8cf13056e",
+    "run_id": "03af0bcf-5231-4a54-8def-9a81b5921059",
     "pipeline_name": "orders_api_ingestion",
     "pipeline_version": "1.0.0",
     "status": "succeeded",
@@ -19,9 +19,9 @@
       "write_mode": "batch",
       "lookback_seconds": 3600
     },
-    "started_at": "2026-10-29T15:35:45.155211+00:00",
-    "finished_at": "2026-10-29T15:35:45.234092+00:00",
-    "duration_seconds": 0.079,
+    "started_at": "2026-10-29T15:37:05.150107+00:00",
+    "finished_at": "2026-10-29T15:37:05.228279+00:00",
+    "duration_seconds": 0.078,
     "checkpoint_before": {
       "orders": {
         "source_record_id": "ORDV-000000324",

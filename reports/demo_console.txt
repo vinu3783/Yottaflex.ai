@@ -1,19 +1,19 @@
 
 [1m== reset database + generate dataset[0m
-{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.schemas"}
-{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.tables"}
-{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.types"}
-{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.constraints"}
-{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.defaults"}
-{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.comments"}
-{"ts": "2026-10-29T15:35:39.734+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.ext.checkconstraint_byname"}
-{"ts": "2026-10-29T15:35:39.757+00:00", "level": "INFO", "logger": "alembic.runtime.migration", "event": "Context impl PostgresqlImpl."}
-{"ts": "2026-10-29T15:35:39.757+00:00", "level": "INFO", "logger": "alembic.runtime.migration", "event": "Will assume transactional DDL."}
-{"ts": "2026-10-29T15:35:39.766+00:00", "level": "INFO", "logger": "alembic.runtime.migration", "event": "Running upgrade  -> 0001, initial schema"}
+{"ts": "2026-10-29T15:36:59.813+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.schemas"}
+{"ts": "2026-10-29T15:36:59.813+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.tables"}
+{"ts": "2026-10-29T15:36:59.813+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.types"}
+{"ts": "2026-10-29T15:36:59.813+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.constraints"}
+{"ts": "2026-10-29T15:36:59.813+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.defaults"}
+{"ts": "2026-10-29T15:36:59.813+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.autogenerate.comments"}
+{"ts": "2026-10-29T15:36:59.813+00:00", "level": "INFO", "logger": "alembic.runtime.plugins", "event": "setup plugin alembic.ext.checkconstraint_byname"}
+{"ts": "2026-10-29T15:36:59.833+00:00", "level": "INFO", "logger": "alembic.runtime.migration", "event": "Context impl PostgresqlImpl."}
+{"ts": "2026-10-29T15:36:59.833+00:00", "level": "INFO", "logger": "alembic.runtime.migration", "event": "Will assume transactional DDL."}
+{"ts": "2026-10-29T15:36:59.838+00:00", "level": "INFO", "logger": "alembic.runtime.migration", "event": "Running upgrade  -> 0001, initial schema"}
 database schema dropped and re-created at head
 
 [1m== start mock API (phase 1)[0m
-{"status":"ok","phase":1,"rows":{"orders":514,"order_events":481}}
+mock health -> HTTP 200
 unauthenticated request -> HTTP 401
 
 [1m== run 1: initial incremental load[0m
@@ -38,9 +38,9 @@ unauthenticated request -> HTTP 401
 }
 
 [1m== run 2: incremental with lookback (expect retries in the log)[0m
-{"ts": "2026-10-29T15:35:41.888+00:00", "level": "WARNING", "logger": "ingestion_pipeline.api_client", "event": "retrying request", "page": 1, "attempt": 1, "error_category": "source_unavailable", "status_code": 503, "retry_in_seconds": 0.422, "run_id": "c0946249-dae4-4c9b-ab32-0ed0f2f5b828", "entity": "orders"}
-{"ts": "2026-10-29T15:35:42.327+00:00", "level": "WARNING", "logger": "ingestion_pipeline.api_client", "event": "retrying request", "page": 1, "attempt": 2, "error_category": "source_unavailable", "status_code": 503, "retry_in_seconds": 0.386, "run_id": "c0946249-dae4-4c9b-ab32-0ed0f2f5b828", "entity": "orders"}
-{"ts": "2026-10-29T15:35:42.781+00:00", "level": "WARNING", "logger": "ingestion_pipeline.api_client", "event": "retrying request", "page": 1, "attempt": 1, "error_category": "rate_limited", "status_code": 429, "retry_in_seconds": 1.0, "run_id": "c0946249-dae4-4c9b-ab32-0ed0f2f5b828", "entity": "order_events"}
+{"ts": "2026-10-29T15:37:01.895+00:00", "level": "WARNING", "logger": "ingestion_pipeline.api_client", "event": "retrying request", "page": 1, "attempt": 1, "error_category": "source_unavailable", "status_code": 503, "retry_in_seconds": 0.459, "run_id": "be86b77f-ecd9-4965-b754-4646af9b7cce", "entity": "orders"}
+{"ts": "2026-10-29T15:37:02.373+00:00", "level": "WARNING", "logger": "ingestion_pipeline.api_client", "event": "retrying request", "page": 1, "attempt": 2, "error_category": "source_unavailable", "status_code": 503, "retry_in_seconds": 0.326, "run_id": "be86b77f-ecd9-4965-b754-4646af9b7cce", "entity": "orders"}
+{"ts": "2026-10-29T15:37:02.763+00:00", "level": "WARNING", "logger": "ingestion_pipeline.api_client", "event": "retrying request", "page": 1, "attempt": 1, "error_category": "rate_limited", "status_code": 429, "retry_in_seconds": 1.0, "run_id": "be86b77f-ecd9-4965-b754-4646af9b7cce", "entity": "order_events"}
 
 [1m== reconcile after incremental runs (very-late rows still missing)[0m
 wrote reports/demo/03_reconcile_after_incremental.json and reports/demo/03_reconcile_after_incremental.md
@@ -92,10 +92,10 @@ RESULT: PASS
 
 [1m== run list, latest run summary, checkpoints[0m
 run_id                                status     mode        started_at                           secs  http retry  failure
-127ffa1c-19cd-45fc-98fd-54a8cf13056e  succeeded  incremental 2026-10-29T15:35:45.155211+00:00    0.079     2     0  
-6ff67f46-25e0-4597-9754-9f26ce08b234  succeeded  backfill    2026-10-29T15:35:44.683269+00:00     0.18     4     0  
-c0946249-dae4-4c9b-ab32-0ed0f2f5b828  succeeded  incremental 2026-10-29T15:35:41.866901+00:00    1.977     5     3  
-b6f50864-f7c4-4bab-8a48-8665350532c5  succeeded  incremental 2026-10-29T15:35:40.855192+00:00    0.235     3     0  
+03af0bcf-5231-4a54-8def-9a81b5921059  succeeded  incremental 2026-10-29T15:37:05.150107+00:00    0.078     2     0  
+ef070ce3-3793-46cb-a32d-50ac88b756a9  succeeded  backfill    2026-10-29T15:37:04.672868+00:00    0.181     4     0  
+be86b77f-ecd9-4965-b754-4646af9b7cce  succeeded  incremental 2026-10-29T15:37:01.875653+00:00    1.953     5     3  
+38d35447-95ce-4113-97e5-8a17a3bdeb12  succeeded  incremental 2026-10-29T15:37:00.899135+00:00    0.227     3     0  
 
 [1m== sample SQL queries[0m
 wrote reports/demo/08_*.txt

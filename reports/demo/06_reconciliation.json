@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T15:35:45.506430+00:00",
+  "generated_at": "2026-10-29T15:37:05.517235+00:00",
   "entities": {
     "orders": {
       "fetched_per_runs": 1315,
@@ -83,7 +83,7 @@
       "rate_limited": 1,
       "server_errors": 2,
       "timeouts": 0,
-      "seconds": 2.471
+      "seconds": 2.439
     }
   ],
   "raw_attempts_by_outcome": {

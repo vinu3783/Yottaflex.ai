@@ -1,6 +1,6 @@
 # Reconciliation report
 
-Generated: 2026-10-29T15:35:45.506430+00:00  
+Generated: 2026-10-29T15:37:05.517235+00:00  
 Overall result: **PASS**
 
 ## Checks
@@ -52,7 +52,7 @@ Overall result: **PASS**
 
 | status | runs | http_attempts | retries | 429s | 5xx | timeouts | seconds |
 |---|---|---|---|---|---|---|---|
-| succeeded | 4 | 14 | 3 | 1 | 2 | 0 | 2.471 |
+| succeeded | 4 | 14 | 3 | 1 | 2 | 0 | 2.439 |
 
 ## Checkpoints
 

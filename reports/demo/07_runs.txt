@@ -1,5 +1,5 @@
 run_id                                status     mode        started_at                           secs  http retry  failure
-127ffa1c-19cd-45fc-98fd-54a8cf13056e  succeeded  incremental 2026-10-29T15:35:45.155211+00:00    0.079     2     0  
-6ff67f46-25e0-4597-9754-9f26ce08b234  succeeded  backfill    2026-10-29T15:35:44.683269+00:00     0.18     4     0  
-c0946249-dae4-4c9b-ab32-0ed0f2f5b828  succeeded  incremental 2026-10-29T15:35:41.866901+00:00    1.977     5     3  
-b6f50864-f7c4-4bab-8a48-8665350532c5  succeeded  incremental 2026-10-29T15:35:40.855192+00:00    0.235     3     0  
+03af0bcf-5231-4a54-8def-9a81b5921059  succeeded  incremental 2026-10-29T15:37:05.150107+00:00    0.078     2     0  
+ef070ce3-3793-46cb-a32d-50ac88b756a9  succeeded  backfill    2026-10-29T15:37:04.672868+00:00    0.181     4     0  
+be86b77f-ecd9-4965-b754-4646af9b7cce  succeeded  incremental 2026-10-29T15:37:01.875653+00:00    1.953     5     3  
+38d35447-95ce-4113-97e5-8a17a3bdeb12  succeeded  incremental 2026-10-29T15:37:00.899135+00:00    0.227     3     0  

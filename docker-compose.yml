@@ -1,0 +1,62 @@
+# Local, self-contained environment: PostgreSQL + mock source API + pipeline CLI.
+#
+#   docker compose up -d db mock-api
+#   docker compose run --rm pipeline ingest db-upgrade
+#   docker compose run --rm pipeline ingest run
+#   docker compose run --rm pipeline pytest
+#
+# Values come from .env (copy .env.example); the defaults below are for local use only.
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-pipeline}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pipeline}
+      POSTGRES_DB: ${POSTGRES_DB:-pipeline}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  mock-api:
+    build: .
+    command: ["ingest", "mock-api", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      MOCK_API_TOKEN: ${MOCK_API_TOKEN:-local-dev-token}
+      MOCK_SEED: ${MOCK_SEED:-42}
+      MOCK_ORDER_COUNT: ${MOCK_ORDER_COUNT:-200}
+      MOCK_RELEASE_PHASE: ${MOCK_RELEASE_PHASE:-1}
+      MOCK_RATE_LIMIT_RPS: ${MOCK_RATE_LIMIT_RPS:-0}
+      MOCK_ENABLE_ADMIN: "true"
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  pipeline:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+      mock-api:
+        condition: service_healthy
+    environment:
+      PIPELINE_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-pipeline}:${POSTGRES_PASSWORD:-pipeline}@db:5432/${POSTGRES_DB:-pipeline}
+      TEST_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-pipeline}:${POSTGRES_PASSWORD:-pipeline}@db:5432/pipeline_test
+      PIPELINE_API_BASE_URL: http://mock-api:8000
+      PIPELINE_API_TOKEN: ${PIPELINE_API_TOKEN:-local-dev-token}
+      PIPELINE_LOG_FORMAT: ${PIPELINE_LOG_FORMAT:-json}
+    command: ["ingest", "run"]
+
+volumes:
+  pgdata:

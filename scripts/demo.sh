@@ -28,6 +28,16 @@ mkdir -p "$OUT"
 rm -f "$OUT"/*
 
 step() { printf '\n\033[1m== %s\033[0m\n' "$*"; }
+# HTTP status of a GET, using Python so the script works where curl is missing (Docker image)
+http_status() {
+  python -c 'import sys, urllib.request, urllib.error
+try:
+    print(urllib.request.urlopen(sys.argv[1], timeout=2).status)
+except urllib.error.HTTPError as e:
+    print(e.code)
+except OSError:
+    print(0)' "$1"
+}
 
 step "reset database + generate dataset"
 $INGEST db-reset --yes
@@ -38,11 +48,11 @@ $INGEST mock-api --dataset-dir "$DATASET" --port "$PORT" --phase 1 &
 MOCK_PID=$!
 trap 'kill $MOCK_PID 2>/dev/null || true' EXIT
 for _ in $(seq 1 50); do
-  curl -sf "$PIPELINE_API_BASE_URL/health" >/dev/null && break
+  [ "$(http_status "$PIPELINE_API_BASE_URL/health")" = "200" ] && break
   sleep 0.2
 done
-curl -s "$PIPELINE_API_BASE_URL/health"; echo
-echo "unauthenticated request -> HTTP $(curl -s -o /dev/null -w '%{http_code}' "$PIPELINE_API_BASE_URL/v1/orders")"
+echo "mock health -> HTTP $(http_status "$PIPELINE_API_BASE_URL/health")"
+echo "unauthenticated request -> HTTP $(http_status "$PIPELINE_API_BASE_URL/v1/orders")"
 
 step "run 1: initial incremental load"
 $INGEST run > "$OUT/01_run_initial.json" 2> "$OUT/01_run_initial.log"
