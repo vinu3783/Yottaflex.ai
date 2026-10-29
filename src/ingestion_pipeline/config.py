@@ -32,7 +32,9 @@ class PipelineSettings(BaseSettings):
     auth_scheme: str = "Bearer"
 
     # HTTP behaviour
-    page_size: int = Field(default=500, ge=1, le=5000)
+    # Upper bound: one page becomes one multi-row upsert with 15 bind parameters
+    # per order; PostgreSQL allows at most 65,535 parameters per statement.
+    page_size: int = Field(default=500, ge=1, le=4000)
     request_timeout_seconds: float = Field(default=10.0, gt=0)
     requests_per_second: float = Field(default=20.0, ge=0, description="0 disables throttling")
     max_attempts: int = Field(default=5, ge=1, le=20)

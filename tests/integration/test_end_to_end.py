@@ -111,3 +111,15 @@ def test_run_metadata_is_complete(db, make_pipeline, review_dataset):
     for ent in summary["entities"].values():
         assert ent["unexplained_difference"] == 0
     assert run_summary(db)["run"]["run_id"] == result.run_id  # latest
+
+
+def test_max_page_size_fits_postgres_parameter_limit(db, make_pipeline):
+    """page_size is capped at 4,000: one page = one multi-row upsert with 15 bind
+    parameters per order, which must stay under PostgreSQL's 65,535 limit."""
+    ds = generate(3, 1500, edge_cases=False, phases=False)
+    assert len(ds.orders) > 4000
+    pipeline, _ = make_pipeline(make_mock(ds, max_page_size=4000), page_size=4000)
+    result = pipeline.run(entities=["orders"])
+    assert result.status == "succeeded"
+    assert result.entity_stats["orders"].pages_processed == -(-len(ds.orders) // 4000)
+    assert scalar(db, "SELECT count(*) FROM orders") == 1500
