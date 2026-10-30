@@ -22,7 +22,7 @@ macOS 15.5 arm64, Python 3.12.10.
 | Reporting / reconciliation | **PASS** | [06_reconciliation.md](../reports/demo/06_reconciliation.md): 14/14 checks PASS |
 | Benchmark executes | **PASS** | [benchmark_20k.json](../reports/benchmark_20k.json); re-executed (2,000 orders) from the fresh clone: batch 5,645 rec/s, row 1,526 rec/s, both reconciled |
 | Demo reproducible from fresh clone | **PASS** | record counts of all four demo runs identical to the committed evidence |
-| Docker image build / Compose startup | **NOT VERIFIED** | Not run: Docker is not installed on the Mac used for development. The Dockerfile and Compose configuration were not executed; verify them on a machine with Docker installed. |
+| Docker image build / Compose startup | **PASS** | Run on Windows with Docker Desktop on 2026-10-30, from the `main` branch downloaded as a zip from GitHub: `docker compose build`; `db` + `mock-api` healthy; `ingest db-upgrade` → schema at head; `ingest run` succeeded (514 orders, 481 events fetched); `pytest` in the container → 130 passed (26.7 s); `scripts/demo.sh` → first reconcile FAIL on the intended very-late orders check, final reconcile PASS; `docker compose down -v`. Log kept on the Windows machine (`docker_test_log.txt`), not committed. |
 | Git: no secrets, no `.env`, no generated data, no AppleDouble files tracked | **PASS** | `git grep` scan for tokens/keys/paths; `.gitignore`; 89 tracked files |
 
 ## 2. Requirements checklist
@@ -151,7 +151,7 @@ git push -u origin main
 
 | Limitation | Next step |
 |---|---|
-| Docker/Compose not executed | Run `docker compose up -d db mock-api && docker compose run --rm pipeline pytest` on a machine with Docker; add a CI workflow with a Postgres service |
+| Docker verified on Windows only, manually | Add a CI workflow (GitHub Actions, Linux) that builds the image and runs the test suite |
 | 100,000-order benchmark not measured | Run `ingest benchmark --orders 100000 --modes batch` with ≥ 3 GB free disk |
 | Sequential, single runner | Partition by entity/time with per-partition checkpoints and a shared rate limiter |
 | Raw bodies in PostgreSQL, no retention job | Object storage (URI + SHA-256 in DB) and a retention policy |

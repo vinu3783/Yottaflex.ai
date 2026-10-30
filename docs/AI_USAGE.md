@@ -60,7 +60,7 @@ advisory lock. See [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md).
 * `ruff check` / `ruff format --check`.
 
 ### What was **not** verified
-* Docker / Docker Compose (Docker not installed on the development machine).
+* Docker / Docker Compose on the macOS development machine (Docker not installed there). It was later run on Windows; see Part B.
 * The 100,000-order benchmark (disk space).
 * Behaviour against a real third-party API (only the mock).
 
@@ -74,7 +74,7 @@ advisory lock. See [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md).
 - [x] Ran `scripts/demo.sh` myself and inspected `reports/demo/`.
 - [x] Reviewed the design decisions and agree with them (no changes).
 - [x] Checked the repository contains no secrets or personal data.
-- [x] Checked the Docker Compose instructions and recorded the limitation: Docker was not installed on the Mac used for development, so the Docker image build and Compose startup were not run. Docker Desktop on Windows remains a possible verification path; until actually run there, this stays NOT VERIFIED in [ACCEPTANCE_REPORT.md](ACCEPTANCE_REPORT.md).
+- [x] Ran the Docker Compose path on Windows with Docker Desktop on 2026-10-30, from the `main` branch downloaded as a zip from GitHub. Result: all six steps passed: build, `db`/`mock-api` healthy, migrations at head, pipeline run succeeded (514 orders, 481 events), 130 tests passed, demo reconcile FAIL (intended) then PASS, clean-up done.
 - [x] Own changes: I reviewed the AI-generated implementation, made some code edits, and fixed errors during testing. The assistant generated most of the implementation; I also provided the requirements (prompt 2), the target repository and the git identity.
 - [x] Practised the project walkthrough.
 
@@ -84,5 +84,5 @@ Notes:
 > split across four files in `prompt-history/`; the verbatim text of four later
 > disclosure-related prompts is unavailable. I reviewed the design, ran the
 > tests and the demo, and checked the evidence in `reports/`. The Docker path
-> and the 100,000-order benchmark were not executed, for the reasons given in
-> the acceptance report.
+> was verified on Windows; the 100,000-order benchmark was not executed, for the
+> reason given in the acceptance report.

@@ -204,8 +204,9 @@ described in [reports/README.md](reports/README.md).
 
 ## 6. Quick start (Docker Compose)
 
-> Not executed on the development machine (Docker was not available there):
-> the files are written to the same commands that were verified locally.
+> Verified on Windows with Docker Desktop on 2026-10-30, from the `main` branch downloaded as a zip from GitHub: images built, `db` and `mock-api`
+> healthy, migrations applied, a pipeline run succeeded, `pytest` reported 130 passed,
+> and `scripts/demo.sh` ended with `RESULT: PASS`.
 
 ```bash
 cp .env.example .env                          # optional; defaults work
@@ -346,7 +347,7 @@ More: [docs/OPERATIONS_RUNBOOK.md](docs/OPERATIONS_RUNBOOK.md).
 * **Orders keep latest state only.** Version history is reconstructable from `raw_responses` and the ledger but not modelled as an SCD-2 table.
 * **Lookback is time-based.** Rows arriving later than the window need an operator backfill (`--since`). The reconciliation report detects the gap only when an oracle or source count is available.
 * **No retention policy job** for `raw_responses` / `record_outcomes` yet.
-* **Docker files not executed** on the development machine (Docker unavailable); verified commands are the local ones.
+* **Docker verified on Windows only** (Docker Desktop); not run on macOS or Linux hosts.
 * **100k-order benchmark not measured** (the development machine's system disk was nearly full); the measured workload is 116,218 records.
 
 Full list and next steps: [docs/ACCEPTANCE_REPORT.md](docs/ACCEPTANCE_REPORT.md#remaining-limitations-and-next-steps).

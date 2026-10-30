@@ -374,13 +374,13 @@ to be spoken aloud in 30-60 seconds.
 
 **Alternatives:** local installs only; devcontainers; Testcontainers for tests.
 
-**Trade-offs:** + one-command environment. − requires Docker; **not executed on the development machine** (Docker was unavailable), so it is the least-verified part of the repo.
+**Trade-offs:** + one-command environment. − requires Docker. It was not available on the macOS development machine, so it was verified separately on Windows with Docker Desktop (build, migrations, run, 130 tests, demo: all passed).
 
 **Failure mode:** image build issues (e.g. lock file/uv version mismatch).
 
 **Mitigation:** uv version in the Dockerfile matches the one that produced `uv.lock`; the local path (`uv sync`) is fully verified and documented as the primary route.
 
-**Interview explanation:** "Docker Compose gives a reviewer Postgres, the mock API and the pipeline with one command, with versions pinned by the lock file. I want to be transparent: I didn't have Docker on my machine, so I verified everything with a local Postgres and wrote the Compose file around the same commands. That's marked NOT VERIFIED in my acceptance report."
+**Interview explanation:** "Docker Compose gives a reviewer Postgres, the mock API and the pipeline with one command, with versions pinned by the lock file. My development Mac didn't have Docker, so I developed against a local Postgres and then ran the whole Compose path on a Windows machine with Docker Desktop: image build, migrations, a pipeline run, the 130 tests and the demo all passed there."
 
 **Likely follow-up:** "How would you run the integration tests in CI?"
 
