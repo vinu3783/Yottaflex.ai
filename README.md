@@ -44,6 +44,11 @@ PYTHONPATH=src python -m plantsim generate --profile full
 
 On Windows PowerShell: `$env:PYTHONPATH="src"; python -m plantsim generate --profile full`.
 
+`generate` recreates its output folder from scratch. Run `plantsim repro-check --profile full`
+and `plantsim sweep --seeds 1-20` afterwards to rebuild `reproducibility.json` and
+`robustness_sweep.json` (about 15 s and 2 min). Regenerating with the default seed reproduces
+the committed `data/` files byte for byte, so `git status` shows no changes.
+
 | Command | What it does |
 |---|---|
 | `plantsim generate --profile full\|starter [--seed N] [--telemetry-points N]` | master data, simulation, edge cases, detection, CSV/JSON/SQL export, validation, evaluation, manifest |
