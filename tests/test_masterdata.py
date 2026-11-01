@@ -64,3 +64,21 @@ def test_each_mode_has_a_setting_for_every_valve_and_pump():
     assert set(per_mode.values()) == {20}
     maint = [m for m in t["operating_mode"] if m["mode_code"] == "MAINTENANCE"]
     assert all(m["maintenance_pump_id"] for m in maint)
+
+
+def test_lifecycle_history_is_valid_for_many_seeds():
+    # Regression: seed 11 once produced maintenance before commissioning.
+    from collections import defaultdict
+
+    from plantsim.validation import ALLOWED_TRANSITIONS
+
+    for seed in range(1, 41):
+        by_comp = defaultdict(list)
+        for e in masterdata.build_master(seed)["component_status_event"]:
+            by_comp[e["node_id"] or e["pipe_id"] or e["sensor_id"]].append(e)
+        for evs in by_comp.values():
+            prev = None
+            for e in sorted(evs, key=lambda e: (e["effective_at"], e["event_id"])):
+                assert e["from_status"] == prev, (seed, e)
+                assert (prev, e["to_status"]) in ALLOWED_TRANSITIONS
+                prev = e["to_status"]

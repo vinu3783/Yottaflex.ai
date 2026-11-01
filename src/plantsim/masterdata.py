@@ -16,6 +16,10 @@ from datetime import date, timedelta
 
 from plantsim import config, ids, physics
 
+# Installs end early enough that commissioning (+7..45 days) always precedes the
+# earliest historical maintenance window (from 2025-07-01).
+LAST_INSTALL = date(2025, 5, 15)
+
 DN_SIZES = (50, 65, 80, 100, 125, 150, 200, 250, 300, 350, 400)
 
 
@@ -122,7 +126,7 @@ def build_master(seed: int) -> dict[str, list[dict]]:
             capacity_target = max(120.0, design_in[i] * rng.uniform(3.2, 5.0))
             area = round(capacity_target / height, 2)
             role = "INTAKE" if i == 0 else ("DISTRIBUTION" if i in leaves else "INTERMEDIATE")
-            install = _rand_date(rng, commissioned, _d("2025-06-30"))
+            install = _rand_date(rng, commissioned, LAST_INSTALL)
             tank_height.append(height)
             t["tank"].append(
                 {
@@ -144,7 +148,7 @@ def build_master(seed: int) -> dict[str, list[dict]]:
 
         def add_valve(role: str, vtype: str, flow: float, design_flow=None) -> str:
             vid = c.next("VALVE")
-            install = _rand_date(rng, commissioned, _d("2025-06-30"))
+            install = _rand_date(rng, commissioned, LAST_INSTALL)
             t["valve"].append(
                 {
                     "valve_id": vid,
@@ -168,7 +172,7 @@ def build_master(seed: int) -> dict[str, list[dict]]:
             length = round(rng.uniform(lmin, lmax), 1)
             dn = _dn_for(flow)
             f = round(rng.uniform(0.018, 0.024), 4)
-            install = _rand_date(rng, commissioned, _d("2025-06-30"))
+            install = _rand_date(rng, commissioned, LAST_INSTALL)
             row = {
                 "pipe_id": pid,
                 "facility_id": fac_id,
@@ -223,7 +227,7 @@ def build_master(seed: int) -> dict[str, list[dict]]:
             rated_head = round(0.8 * h0, 1)
             eta = round(rng.uniform(0.65, 0.82), 3)
             motor = math.ceil(1.15 * physics.hydraulic_power_kw(q, rated_head) / eta)
-            install = _rand_date(rng, commissioned, _d("2025-06-30"))
+            install = _rand_date(rng, commissioned, LAST_INSTALL)
             t["pump"].append(
                 {
                     "pump_id": pump_id,
