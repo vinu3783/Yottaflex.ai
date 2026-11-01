@@ -37,6 +37,10 @@ def main(argv: list[str] | None = None) -> int:
     e = sub.add_parser("evaluate", help="re-score detector alarms against ground truth")
     e.add_argument("--data", type=Path, default=Path("data/full"))
 
+    d = sub.add_parser("dashboard", help="build a standalone HTML operations dashboard")
+    d.add_argument("--data", type=Path, default=Path("data/full"))
+    d.add_argument("--out", type=Path, default=Path("reports/plant_ops_dashboard.html"))
+
     r = sub.add_parser("repro-check", help="generate twice and re-simulate every run; compare checksums")
     _profile_args(r)
     r.add_argument("--work", type=Path, default=Path("out/repro"))
@@ -101,6 +105,13 @@ def main(argv: list[str] | None = None) -> int:
         io.dump_json(args.data / "reports" / "evaluation.json", res)
         (args.data / "reports" / "evaluation.md").write_text(evaluation.to_markdown(res), "utf-8")
         print(json.dumps(res["headline"], indent=2))
+        return 0
+
+    if args.cmd == "dashboard":
+        from plantsim.dashboard import build_dashboard
+
+        path = build_dashboard(args.data, args.out)
+        print(f"dashboard: {path}")
         return 0
 
     if args.cmd == "repro-check":

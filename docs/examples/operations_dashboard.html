@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Plant Ops Center · YottaFlex</title>
+<style>
+:root{--bg:#08111d;--panel:#101d2b;--panel2:#142437;--line:#24364a;--text:#e5edf5;
+--muted:#91a4b8;--green:#34d399;--blue:#38bdf8;--red:#fb7185;--amber:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#15334a 0,transparent 42%),var(--bg);
+color:var(--text);font:14px/1.5 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:1240px;margin:auto;padding:38px 28px 56px}header{display:flex;justify-content:space-between;
+align-items:flex-start;gap:24px;margin-bottom:28px}.eyebrow,.label{color:var(--muted);font-size:11px;
+letter-spacing:.14em;text-transform:uppercase;font-weight:700}h1{font-size:clamp(28px,4vw,42px);letter-spacing:-.04em;
+margin:7px 0 5px}.sub{color:var(--muted);margin:0}.live{border:1px solid #23664f;color:#75efbd;
+background:#0d2b25;border-radius:999px;padding:7px 12px;font-size:12px;white-space:nowrap}
+.live:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);
+margin-right:8px;box-shadow:0 0 12px var(--green)}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+gap:14px;margin-bottom:16px}.card,.panel{border:1px solid var(--line);background:linear-gradient(145deg,#122234,var(--panel));
+border-radius:16px}.card{padding:19px 20px;min-height:121px}.value{font-size:34px;font-weight:720;
+letter-spacing:-.05em;margin:8px 0 1px}.hint{color:var(--muted);font-size:12px}.accent-green{color:var(--green)}
+.accent-blue{color:var(--blue)}.accent-amber{color:var(--amber)}.layout{display:grid;grid-template-columns:1.15fr .85fr;
+gap:16px;margin-bottom:16px}.panel{padding:21px 22px;min-width:0}.panel-head{display:flex;justify-content:space-between;
+align-items:flex-start;gap:12px;margin-bottom:16px}h2{font-size:16px;margin:0 0 3px;letter-spacing:-.02em}
+.panel-note{color:var(--muted);font-size:12px}.legend{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);
+font-size:11px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+svg{width:100%;height:auto;overflow:visible}.grid line{stroke:var(--line);stroke-dasharray:3 5}
+.axis{fill:var(--muted);font-size:10px}.stem{stroke:#29425a;stroke-width:2}.empty{color:var(--muted);
+padding:22px;text-align:center}.score{display:flex;align-items:center;gap:20px;margin:8px 0 18px}
+.ring{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;flex:none;
+background:conic-gradient(var(--green) 0deg 360deg,#203247 360deg);position:relative}
+.ring:after{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--panel)}
+.ring span{position:relative;z-index:1;font-size:23px;font-weight:750}.score-copy strong{font-size:17px}
+.score-copy p{color:var(--muted);margin:4px 0 0}.mini-stats{display:grid;grid-template-columns:1fr 1fr;
+gap:9px}.mini{background:var(--panel2);border-radius:10px;padding:11px 12px}.mini b{display:block;font-size:17px}
+.mini span{font-size:11px;color:var(--muted)}.table-panel{padding:0;overflow:hidden}.table-top{padding:21px 22px 14px;
+display:flex;justify-content:space-between;align-items:center;gap:12px}select{background:#0b1724;color:var(--text);
+border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit}.scroll{overflow:auto}
+table{border-collapse:collapse;width:100%;min-width:860px}th{text-align:left;color:var(--muted);font-size:10px;
+text-transform:uppercase;letter-spacing:.1em;padding:11px 13px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+td{padding:12px 13px;border-bottom:1px solid #1c2b3c;vertical-align:top;font-size:12px}tr:last-child td{border-bottom:0}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;white-space:nowrap}
+.severity,.state{display:inline-block;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:750;letter-spacing:.04em}
+.high{color:#ff9eac;background:#46202b}.medium{color:#d2b7ff;background:#30264b}.low{color:#8edbff;background:#14364b}
+.active{color:#ff9eac;background:#46202b}.cleared{color:#81e7ba;background:#153b31}
+footer{color:var(--muted);font-size:11px;margin-top:17px;display:flex;justify-content:space-between;gap:12px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.layout{grid-template-columns:1fr}}
+@media(max-width:520px){.wrap{padding:25px 15px 40px}header{display:block}.live{display:inline-block;margin-top:14px}
+.grid{gap:9px}.card{padding:14px;min-height:110px}.value{font-size:27px}.panel{padding:16px}.table-top{padding:16px;align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header><div><div class="eyebrow">YottaFlex · Synthetic plant intelligence</div>
+<h1>Plant Ops Center</h1><p class="sub">A physics-first view of detection performance and facility health.</p></div>
+<div class="live">OFFLINE DATA · FULL PROFILE</div></header>
+<section class="grid" aria-label="Dataset summary">
+<article class="card"><div class="label">Telemetry analyzed</div><div class="value accent-blue">100,000</div>
+<div class="hint">deterministic sensor readings</div></article>
+<article class="card"><div class="label">Fault recall</div><div class="value accent-green">100</div>
+<div class="hint">11/11 injected process/sensor faults</div></article>
+<article class="card"><div class="label">Alarm precision</div><div class="value accent-green">100</div>
+<div class="hint">0 false process alarms</div></article>
+<article class="card"><div class="label">Live alarm queue</div><div class="value accent-amber">11</div>
+<div class="hint">active of 19 recorded alarms</div></article>
+</section>
+<section class="layout">
+<article class="panel"><div class="panel-head"><div><h2>Detection response</h2>
+<div class="panel-note">Minutes from fault onset to first correct detection · lower is faster</div></div></div>
+<svg viewBox="0 0 760 230" role="img" aria-label="Detection delay in minutes for each detected fault"><line class="grid" x1="54" y1="188.0" x2="742" y2="188.0"/><text class="axis" x="44" y="192.0" text-anchor="end">0m</text><line class="grid" x1="54" y1="105.9" x2="742" y2="105.9"/><text class="axis" x="44" y="109.9" text-anchor="end">210m</text><line class="grid" x1="54" y1="18.0" x2="742" y2="18.0"/><text class="axis" x="44" y="22.0" text-anchor="end">435m</text><line class="stem" x1="54.0" y1="188" x2="54.0" y2="152.8"/><circle cx="54.0" cy="152.8" r="6" fill="#fb7185"><title>PIPE-017: 90 min</title></circle><line class="stem" x1="122.8" y1="188" x2="122.8" y2="170.4"/><circle cx="122.8" cy="170.4" r="6" fill="#fbbf24"><title>PIPE-029: 45 min</title></circle><line class="stem" x1="191.6" y1="188" x2="191.6" y2="64.9"/><circle cx="191.6" cy="64.9" r="6" fill="#a78bfa"><title>PUMP-001: 315 min</title></circle><line class="stem" x1="260.4" y1="188" x2="260.4" y2="158.7"/><circle cx="260.4" cy="158.7" r="6" fill="#38bdf8"><title>SNS-002: 75 min</title></circle><line class="stem" x1="329.2" y1="188" x2="329.2" y2="147.0"/><circle cx="329.2" cy="147.0" r="6" fill="#fb7185"><title>PIPE-069: 105 min</title></circle><line class="stem" x1="398.0" y1="188" x2="398.0" y2="164.6"/><circle cx="398.0" cy="164.6" r="6" fill="#fbbf24"><title>PIPE-047: 60 min</title></circle><line class="stem" x1="466.8" y1="188" x2="466.8" y2="88.3"/><circle cx="466.8" cy="88.3" r="6" fill="#a78bfa"><title>PUMP-012: 255 min</title></circle><line class="stem" x1="535.6" y1="188" x2="535.6" y2="64.9"/><circle cx="535.6" cy="64.9" r="6" fill="#38bdf8"><title>SNS-054: 315 min</title></circle><line class="stem" x1="604.4" y1="188" x2="604.4" y2="64.9"/><circle cx="604.4" cy="64.9" r="6" fill="#fbbf24"><title>PIPE-077: 315 min</title></circle><line class="stem" x1="673.2" y1="188" x2="673.2" y2="18.0"/><circle cx="673.2" cy="18.0" r="6" fill="#a78bfa"><title>PUMP-016: 435 min</title></circle><line class="stem" x1="742.0" y1="188" x2="742.0" y2="141.1"/><circle cx="742.0" cy="141.1" r="6" fill="#38bdf8"><title>SNS-076: 120 min</title></circle><text class="axis" x="54.0" y="216" text-anchor="middle">PIPE-017</text><text class="axis" x="122.8" y="216" text-anchor="middle">PIPE-029</text><text class="axis" x="191.6" y="216" text-anchor="middle">PUMP-001</text><text class="axis" x="260.4" y="216" text-anchor="middle">SNS-002</text><text class="axis" x="329.2" y="216" text-anchor="middle">PIPE-069</text><text class="axis" x="398.0" y="216" text-anchor="middle">PIPE-047</text><text class="axis" x="466.8" y="216" text-anchor="middle">PUMP-012</text><text class="axis" x="535.6" y="216" text-anchor="middle">SNS-054</text><text class="axis" x="604.4" y="216" text-anchor="middle">PIPE-077</text><text class="axis" x="673.2" y="216" text-anchor="middle">PUMP-016</text><text class="axis" x="742.0" y="216" text-anchor="middle">SNS-076</text></svg>
+<div class="legend"><span><i class="dot" style="background:#fb7185"></i>Leak</span>
+<span><i class="dot" style="background:#fbbf24"></i>Blockage</span>
+<span><i class="dot" style="background:#a78bfa"></i>Pump degradation</span>
+<span><i class="dot" style="background:#38bdf8"></i>Sensor fault</span></div></article>
+<article class="panel"><div class="panel-head"><div><h2>Evaluation snapshot</h2>
+<div class="panel-note">Ground-truth-scored outcome summary</div></div></div>
+<div class="score"><div class="ring" style="background:conic-gradient(var(--green) 0deg 360.0deg,#203247 360.0deg 360deg)">
+<span>11/11</span></div>
+<div class="score-copy"><strong>Faults correctly handled</strong>
+<p>Includes the below-tolerance leak that correctly raised no alarm.</p></div></div>
+<div class="mini-stats"><div class="mini"><b>5/5</b><span>edge cases handled</span></div>
+<div class="mini"><b>100</b><span>data-quality recall</span></div>
+<div class="mini"><b>0</b><span>false alarms on normal runs</span></div>
+<div class="mini"><b>193.6 min</b><span>mean detection delay</span></div>
+</div></article></section>
+<section class="panel table-panel"><div class="table-top"><div><h2>Alarm register</h2>
+<div class="panel-note">Exported detector and operator alarms · select a state to filter</div></div>
+<label class="label" for="state-filter">Show <select id="state-filter"><option value="ALL">All states</option>
+<option value="ACTIVE">Active</option><option value="CLEARED">Cleared</option></select></label></div>
+<div class="scroll"><table><thead><tr><th>Raised at</th><th>Severity</th><th>Alarm type</th>
+<th>Facility</th><th>Run</th><th>State</th><th>Evidence</th></tr></thead>
+<tbody id="alarm-rows"><tr data-state="ACTIVE" data-type="LEAK_SUSPECTED"><td class="mono">2026-03-05T19:30:00Z</td><td><span class="severity high">HIGH</span></td><td>LEAK_SUSPECTED</td><td class="mono">FAC-001</td><td class="mono">SIM-2026-000002</td><td><span class="state active">ACTIVE</span></td><td>15.07 m3/h measured into TANK-006 is not stored: loss between the meter and the tank</td></tr><tr data-state="ACTIVE" data-type="LEAK_SUSPECTED"><td class="mono">2026-03-05T21:15:00Z</td><td><span class="severity high">HIGH</span></td><td>LEAK_SUSPECTED</td><td class="mono">FAC-001</td><td class="mono">SIM-2026-000002</td><td><span class="state active">ACTIVE</span></td><td>Operator log: TANK-006 filling slower than the meter suggests</td></tr><tr data-state="ACTIVE" data-type="BLOCKAGE_SUSPECTED"><td class="mono">2026-03-08T23:00:00Z</td><td><span class="severity high">HIGH</span></td><td>BLOCKAGE_SUSPECTED</td><td class="mono">FAC-001</td><td class="mono">SIM-2026-000003</td><td><span class="state active">ACTIVE</span></td><td>PUMP-006 is on its curve but delivers 50% of the expected flow: restriction on the TANK-008 -&gt; TANK-009 path</td></tr><tr data-state="CLEARED" data-type="DQ_LEVEL_EXCEEDS_CAPACITY"><td class="mono">2026-03-09T20:30:00Z</td><td><span class="severity low">LOW</span></td><td>DQ_LEVEL_EXCEEDS_CAPACITY</td><td class="mono">FAC-001</td><td class="mono">SIM-2026-000003</td><td><span class="state cleared">CLEARED</span></td><td>SNS-005 reads 8.353 m, above the 7.1 m height of TANK-004</td></tr><tr data-state="ACTIVE" data-type="PUMP_DEGRADATION"><td class="mono">2026-03-11T22:45:00Z</td><td><span class="severity medium">MEDIUM</span></td><td>PUMP_DEGRADATION</td><td class="mono">FAC-001</td><td class="mono">SIM-2026-000004</td><td><span class="state active">ACTIVE</span></td><td>PUMP-001 delivers up to 4.31 m less head than its curve</td></tr><tr data-state="ACTIVE" data-type="LEVEL_SENSOR_FAULT"><td class="mono">2026-03-14T22:45:00Z</td><td><span class="severity medium">MEDIUM</span></td><td>LEVEL_SENSOR_FAULT</td><td class="mono">FAC-001</td><td class="mono">SIM-2026-000005</td><td><span class="state active">ACTIVE</span></td><td>Level sensors on TANK-002 disagree by up to 3.575 m; SNS-002 has the larger mass-balance error</td></tr><tr data-state="CLEARED" data-type="DQ_LEVEL_EXCEEDS_CAPACITY"><td class="mono">2026-03-18T06:30:00Z</td><td><span class="severity low">LOW</span></td><td>DQ_LEVEL_EXCEEDS_CAPACITY</td><td class="mono">FAC-002</td><td class="mono">SIM-2026-000006</td><td><span class="state cleared">CLEARED</span></td><td>SNS-044 reads 7.195 m, above the 6.7 m height of TANK-018</td></tr><tr data-state="ACTIVE" data-type="LEAK_SUSPECTED"><td class="mono">2026-03-20T22:45:00Z</td><td><span class="severity high">HIGH</span></td><td>LEAK_SUSPECTED</td><td class="mono">FAC-002</td><td class="mono">SIM-2026-000007</td><td><span class="state active">ACTIVE</span></td><td>4.03 m3/h measured into TANK-020 is not stored: loss between the meter and the tank</td></tr><tr data-state="CLEARED" data-type="BLOCKAGE_SUSPECTED"><td class="mono">2026-03-24T00:15:00Z</td><td><span class="severity high">HIGH</span></td><td>BLOCKAGE_SUSPECTED</td><td class="mono">FAC-002</td><td class="mono">SIM-2026-000008</td><td><span class="state cleared">CLEARED</span></td><td>PUMP-009 is on its curve but delivers 55% of the expected flow: restriction on the TANK-012 -&gt; TANK-014 path</td></tr><tr data-state="CLEARED" data-type="DQ_LEVEL_EXCEEDS_CAPACITY"><td class="mono">2026-03-26T11:00:00Z</td><td><span class="severity low">LOW</span></td><td>DQ_LEVEL_EXCEEDS_CAPACITY</td><td class="mono">FAC-002</td><td class="mono">SIM-2026-000009</td><td><span class="state cleared">CLEARED</span></td><td>SNS-038 reads 9.849 m, above the 8.7 m height of TANK-013</td></tr><tr data-state="ACTIVE" data-type="PUMP_DEGRADATION"><td class="mono">2026-03-27T00:15:00Z</td><td><span class="severity medium">MEDIUM</span></td><td>PUMP_DEGRADATION</td><td class="mono">FAC-002</td><td class="mono">SIM-2026-000009</td><td><span class="state active">ACTIVE</span></td><td>PUMP-012 delivers up to 4.64 m less head than its curve</td></tr><tr data-state="ACTIVE" data-type="LEAK_SUSPECTED"><td class="mono">2026-03-30T03:30:00Z</td><td><span class="severity high">HIGH</span></td><td>LEAK_SUSPECTED</td><td class="mono">FAC-002</td><td class="mono">SIM-2026-000010</td><td><span class="state active">ACTIVE</span></td><td>Operator log: TANK-015 filling slower than the meter suggests</td></tr><tr data-state="ACTIVE" data-type="FLOW_SENSOR_FAULT"><td class="mono">2026-03-30T05:30:00Z</td><td><span class="severity medium">MEDIUM</span></td><td>FLOW_SENSOR_FAULT</td><td class="mono">FAC-002</td><td class="mono">SIM-2026-000010</td><td><span class="state active">ACTIVE</span></td><td>PUMP-010 appears to run 3.06 m above its curve: flow meter SNS-054 over-reads; explains the imbalance at TANK-013; explains the imbalance at TANK-015</td></tr><tr data-state="CLEARED" data-type="DQ_LEVEL_EXCEEDS_CAPACITY"><td class="mono">2026-04-01T12:30:00Z</td><td><span class="severity low">LOW</span></td><td>DQ_LEVEL_EXCEEDS_CAPACITY</td><td class="mono">FAC-003</td><td class="mono">SIM-2026-000011</td><td><span class="state cleared">CLEARED</span></td><td>SNS-074 reads 5.924 m, above the 5.6 m height of TANK-026</td></tr><tr data-state="ACTIVE" data-type="BLOCKAGE_SUSPECTED"><td class="mono">2026-04-07T23:45:00Z</td><td><span class="severity high">HIGH</span></td><td>BLOCKAGE_SUSPECTED</td><td class="mono">FAC-003</td><td class="mono">SIM-2026-000013</td><td><span class="state active">ACTIVE</span></td><td>PUMP-015 is on its curve but delivers 54% of the expected flow: restriction on the TANK-021 -&gt; TANK-022 path</td></tr><tr data-state="CLEARED" data-type="DQ_LEVEL_EXCEEDS_CAPACITY"><td class="mono">2026-04-08T01:45:00Z</td><td><span class="severity low">LOW</span></td><td>DQ_LEVEL_EXCEEDS_CAPACITY</td><td class="mono">FAC-003</td><td class="mono">SIM-2026-000013</td><td><span class="state cleared">CLEARED</span></td><td>SNS-074 reads 6.274 m, above the 5.6 m height of TANK-026</td></tr><tr data-state="CLEARED" data-type="DQ_LEVEL_EXCEEDS_CAPACITY"><td class="mono">2026-04-10T00:45:00Z</td><td><span class="severity low">LOW</span></td><td>DQ_LEVEL_EXCEEDS_CAPACITY</td><td class="mono">FAC-003</td><td class="mono">SIM-2026-000014</td><td><span class="state cleared">CLEARED</span></td><td>SNS-073 reads 5.701 m, above the 5.1 m height of TANK-025</td></tr><tr data-state="CLEARED" data-type="PUMP_DEGRADATION"><td class="mono">2026-04-11T07:30:00Z</td><td><span class="severity medium">MEDIUM</span></td><td>PUMP_DEGRADATION</td><td class="mono">FAC-003</td><td class="mono">SIM-2026-000014</td><td><span class="state cleared">CLEARED</span></td><td>PUMP-016 delivers up to 2.43 m less head than its curve</td></tr><tr data-state="ACTIVE" data-type="LEVEL_SENSOR_FAULT"><td class="mono">2026-04-13T22:45:00Z</td><td><span class="severity medium">MEDIUM</span></td><td>LEVEL_SENSOR_FAULT</td><td class="mono">FAC-003</td><td class="mono">SIM-2026-000015</td><td><span class="state active">ACTIVE</span></td><td>Level sensors on TANK-028 disagree by up to 1.758 m; SNS-076 has the larger mass-balance error</td></tr></tbody></table></div></section>
+<footer><span>Generated from exported alarms and evaluation reports; no external assets or runtime services.</span>
+<span>Seed 20261022 · full dataset</span></footer>
+</main>
+<script>
+document.getElementById("state-filter").addEventListener("change", function (event) {
+  for (const row of document.querySelectorAll("#alarm-rows tr[data-state]")) {
+    row.hidden = event.target.value !== "ALL" && row.dataset.state !== event.target.value;
+  }
+});
+</script>
+</body>
+</html>

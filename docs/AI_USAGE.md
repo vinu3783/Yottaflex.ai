@@ -37,7 +37,7 @@ keys; and a standard-library-only implementation.
 | `ruff` failed to install into a virtual environment on the exFAT drive (macOS `._` files) | `uv sync` error | virtual environment placed on the internal disk (`UV_PROJECT_ENVIRONMENT`); not a code issue |
 
 ### Verified by running it (evidence in `data/full/reports/`)
-- `pytest`: 45 tests pass, including a SQLite load with foreign keys enforced and negative
+- `pytest`: 46 tests pass, including a SQLite load with foreign keys enforced and negative
   validation tests.
 - `plantsim generate` (full and starter): validation PASS, 11/11 faults, 0 false alarms,
   5/5 edge cases.
@@ -71,4 +71,3 @@ keys; and a standard-library-only implementation.
   - reviewed the result and completed this checklist.
 
 Notes:
-

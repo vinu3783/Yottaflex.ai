@@ -36,7 +36,8 @@ Requires Python 3.11+. There are no runtime dependencies.
 uv sync
 uv run plantsim generate --profile full        # ~5 s: data/full/
 uv run plantsim generate --profile starter     # ~1 s: data/starter/ (10,000 telemetry points)
-uv run pytest                                  # 45 tests, ~13 s
+uv run plantsim dashboard --data data/full --out docs/examples/operations_dashboard.html
+uv run pytest                                  # 46 tests, ~13 s
 
 # or plain Python, no install
 PYTHONPATH=src python -m plantsim generate --profile full
@@ -57,7 +58,12 @@ the committed `data/` files byte for byte, so `git status` shows no changes.
 | `plantsim repro-check --profile full` | generate twice and compare checksums; re-simulate every run from its stored config |
 | `plantsim sweep --seeds 1-20` | robustness: regenerate with other seeds and report detection metrics |
 | `plantsim whatif --base-run SIM-2026-000001 --mode HIGH_DEMAND --disable-pump PUMP-002` | simulate an operating change against a baseline run |
+| `plantsim dashboard --data data/full --out docs/examples/operations_dashboard.html` | create a self-contained, interactive HTML operations dashboard |
 | `plantsim docs` | regenerate [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) from the schema |
+
+The dashboard is a shareable, dependency-free snapshot: it visualizes fault response times,
+headline evaluation metrics and the alarm register, with an active/cleared filter. Open
+[the committed full-profile example](docs/examples/operations_dashboard.html) in any browser.
 
 The same generator produces both profiles; only `--telemetry-points` changes. The total must
 be a multiple of 500 (5 runs per facility x 100 sensors). Full = 200 steps per run
