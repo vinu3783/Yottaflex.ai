@@ -1,0 +1,73 @@
+{
+  "baseline_run": "SIM-2026-000001",
+  "whatif_run": "SIM-2026-000017",
+  "change": {
+    "pump_speed_pct": {},
+    "valve_opening_pct": {},
+    "pump_disabled": [
+      "PUMP-002"
+    ],
+    "demand_multiplier": 1.0,
+    "mode": "HIGH_DEMAND"
+  },
+  "note": "both re-simulated fault-free with the same seed",
+  "true_outcomes": {
+    "unmet_demand_m3": {
+      "baseline": 302.882,
+      "whatif": 1122.682,
+      "delta": 819.8
+    },
+    "delivered_m3": {
+      "baseline": 4632.621,
+      "whatif": 5016.858,
+      "delta": 384.237
+    },
+    "energy_kwh": {
+      "baseline": 580.415,
+      "whatif": 425.767,
+      "delta": -154.648
+    },
+    "min_tank_fill_frac": {
+      "baseline": 0.0,
+      "whatif": 0.0,
+      "delta": 0.0
+    },
+    "spill_m3": {
+      "baseline": 0.0,
+      "whatif": 0.0,
+      "delta": 0.0
+    },
+    "pump_starts": {
+      "baseline": 36,
+      "whatif": 20,
+      "delta": -16
+    }
+  },
+  "measured_summary": {
+    "baseline": {
+      "measured_inflow_m3": 4985.365,
+      "measured_outflow_m3": 4611.84,
+      "measured_storage_change_m3": 371.34,
+      "facility_balance_residual_m3": 2.185,
+      "facility_balance_residual_pct": 0.044,
+      "estimated_pump_energy_kwh": 580.16,
+      "min_tank_fill_frac": 0.0,
+      "tank_steps_below_low_level": 38,
+      "pump_starts": 36,
+      "basis": "intervals 2..steps; inlet/outlet meters and primary level sensors"
+    },
+    "whatif": {
+      "measured_inflow_m3": 4724.24,
+      "measured_outflow_m3": 4992.457,
+      "measured_storage_change_m3": -269.457,
+      "facility_balance_residual_m3": 1.24,
+      "facility_balance_residual_pct": 0.026,
+      "estimated_pump_energy_kwh": 425.739,
+      "min_tank_fill_frac": 0.0,
+      "tank_steps_below_low_level": 819,
+      "pump_starts": 20,
+      "basis": "intervals 2..steps; inlet/outlet meters and primary level sensors"
+    }
+  },
+  "alarms_in_whatif": []
+}
