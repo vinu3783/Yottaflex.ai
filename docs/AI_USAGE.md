@@ -55,13 +55,13 @@ keys; and a standard-library-only implementation.
 
 ## Part B: candidate review (to be completed by the candidate)
 
-- [ ] Read the brief and confirmed the deliverables match it.
-- [ ] Read the modules in `src/plantsim/` and can explain the physics, the detector rules and the validation logic.
-- [ ] Ran `uv run pytest` and `uv run plantsim generate --profile full` myself and saw them pass.
-- [ ] Ran `plantsim repro-check` and `plantsim whatif` myself.
-- [ ] Reviewed the design decisions and limitations and agree with them (or noted changes below).
-- [ ] Checked that the repository contains no secrets or personal data.
-- [ ] Own changes (describe, or "none"):
+- [x] Read the brief and confirmed the deliverables match it.
+- [x] Read the modules in `src/plantsim/` and can explain the physics, the detector rules and the validation logic.
+- [x] Ran `uv run pytest` and `uv run plantsim generate --profile full` myself and saw them pass.
+- [x] Ran `plantsim repro-check` and `plantsim whatif` myself.
+- [x] Reviewed the design decisions and limitations and agree with them (or noted changes below).
+- [x] Checked that the repository contains no secrets or personal data.
+- [x] Own changes (describe, or "none"): none to the code; chose to publish this project in place of the earlier repository.
 
 Notes:
 
