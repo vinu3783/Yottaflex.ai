@@ -1,35 +1,36 @@
-# Project brief, prompt record & delivery plan
+# Refined project prompts
 
-This folder documents how the plant-simulation submission was scoped, built and published.
-It is intended to give reviewers both the original user prompts and a concise map from the
-brief to the delivered work.
+This folder contains a polished, project-specific prompt set describing the plant
+simulation's scope, workspace assessment, implementation and publication. It is designed
+to help reviewers understand the work and its acceptance criteria.
 
-> **Transcript integrity:** prompts below are preserved as sent, including spelling and
-> grammar. The phase descriptions and delivery map are editorial summaries for readability;
-> they are not additional prompts or claims that the prompts were more detailed than they were.
-> Assistant responses are not reproduced.
+> **Important:** these are editorial reconstructions, not verbatim historical prompts.
+> They were rewritten after implementation to organize the project's actual scope into a
+> clear prompt sequence. They must not be read as a transcript or as evidence that each
+> detailed requirement was originally requested in these exact words. The project's
+> implementation and test results are documented separately.
 
 ## Project phases
 
-| Phase | Goal | Prompt record |
+| Phase | Goal | Prompt |
 |---|---|---|
-| 1 · Define the brief | Establish the business problem, domain model, deterministic dataset, edge cases, evaluation criteria and lawful-data constraints. | [01 · Project brief](01_brief.md) |
-| 2 · Locate the workspace | Point the assistant to the existing project folder and establish which workspace to inspect. | [02 · Workspace check](02_check_workspace.md) |
-| 3 · Build and deliver | Request completion of the end-to-end project and publication of the result. | [03 · Build request](03_build_and_push.md) |
-| 4 · Resolve publication scope | Clarify repository ownership and confirm that this plant-simulation project—not the earlier API-pipeline task—is the submission to publish. | [04 · Publishing decision](04_publish.md) |
+| 1 · Define the project | Specify the simulation, dataset, fault scenarios, evaluation and acceptance criteria. | [Project brief](01_brief.md) |
+| 2 · Inspect the workspace | Establish whether the existing project matches the brief and set a safe project boundary. | [Workspace assessment](02_check_workspace.md) |
+| 3 · Implement and verify | Build the project end to end and verify it against measurable acceptance criteria. | [Build and delivery](03_build_and_push.md) |
+| 4 · Publish | Confirm repository scope, preserve the earlier project backup, and verify publication. | [Publishing](04_publish.md) |
 
-## Delivery plan and evidence
+## Delivery map
 
-The detailed requirements in the first prompt translate into these reviewable workstreams.
-Links point to the implementation or project documentation that records the result.
+The prompts summarize the intended project work. These links provide evidence of the
+implemented behavior and its documented limitations.
 
-| Workstream | Intended outcome | Evidence in the project |
-|---|---|---|
-| Domain model and traceability | Document entities, relationships, IDs, units, lifecycle history and assumptions. | [Data dictionary](../docs/DATA_DICTIONARY.md), [design decisions](../docs/DESIGN_DECISIONS.md) |
-| Deterministic plant simulation | Generate connected plant data and reproducible telemetry from a fixed seed. | [Simulation model](../docs/SIMULATION_MODEL.md), [dataset manifest](../data/full/manifest.json) |
-| Faults and detection | Inject labelled scenarios separately from detector inputs; explain detection rules and exceptions. | [Evaluation report](../data/full/reports/evaluation.md), [requirements trace](../docs/REQUIREMENTS_TRACE.md) |
-| Validation and evaluation | Check integrity, edge cases, reproducibility, detection quality and robustness with measurable outputs. | [Validation and evaluation](../docs/VALIDATION_AND_EVALUATION.md), [test suite](../tests/) |
-| Delivery and responsible use | Provide run instructions, disclose AI assistance, and document synthetic-data provenance and limitations. | [Project README](../README.md), [AI usage](../docs/AI_USAGE.md), [limitations](../README.md#limitations) |
+| Workstream | Evidence |
+|---|---|
+| Domain model and traceability | [Data dictionary](../docs/DATA_DICTIONARY.md), [design decisions](../docs/DESIGN_DECISIONS.md) |
+| Deterministic simulation and dataset | [Simulation model](../docs/SIMULATION_MODEL.md), [dataset manifest](../data/full/manifest.json) |
+| Fault injection, detection and scoring | [Evaluation report](../data/full/reports/evaluation.md), [requirements trace](../docs/REQUIREMENTS_TRACE.md) |
+| Validation and automated tests | [Validation and evaluation](../docs/VALIDATION_AND_EVALUATION.md), [test suite](../tests/) |
+| Setup, provenance and limitations | [Project README](../README.md), [AI usage disclosure](../docs/AI_USAGE.md) |
 
-The project brief remains the source of requirements. The delivery map is a reviewer aid,
-not a substitute for the underlying test results or documentation.
+The original project brief remains the source of requirements. The prompts here are an
+edited presentation of that scope, not a substitute for source code, reports or test results.

@@ -1,26 +1,22 @@
-# Phase 4 · Publishing decision
+# 4. Publish the project
 
-This phase records how the destination repository and project scope were clarified. The
-earlier API-pipeline task and this plant-simulation submission had shared a chat session;
-the messages below preserve that distinction and the candidate's final publishing decision.
-
-The quoted user messages are verbatim. The context below them is an editorial summary of the
-decision, not a reconstruction of omitted assistant messages.
+> **Refined prompt — editorial reconstruction, not a verbatim transcript.**
+> The repository and project boundary below reflect the final publishing decision.
 
 ```text
-push old one only this was the mainntask
-```
-
-```text
+Publish the completed plant-simulation project to:
 https://github.com/vinu3783/Yottaflex.ai
-vinayakagc210@gmail.com pudh it make only me contibuter add related to this rtead me file
-```
 
-```text
-the main problemstatemt was this only not old one
-```
+This plant-simulation submission is the project to publish; it is not the earlier
+API-ingestion-pipeline task that previously used this repository. Preserve a local backup
+of the earlier project before replacing repository contents. Do not overwrite or delete
+the backup.
 
-**Decision and outcome:** the candidate chose to publish the plant-simulation project in
-`github.com/vinu3783/Yottaflex.ai`, replacing the earlier API-pipeline project there. A local
-backup of the earlier project was retained. The project README received an author section,
-and commits were authored by the candidate.
+Keep the published README focused on the plant-simulation project. Include clear setup,
+run, test, results, limitations, provenance and author information. Attribute commits to
+the candidate account only; do not add an AI co-author.
+
+Before publishing, check the destination and current branch, review the exact changes,
+run the relevant tests, and confirm the intended replacement scope. After pushing, report
+the commit and verify that the local branch is synchronized with the remote.
+```

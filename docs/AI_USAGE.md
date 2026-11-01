@@ -11,8 +11,9 @@ Prompts: [../prompt-history/](../prompt-history/).
 ## Part A: what the AI assistant did
 
 **Tool:** Claude Code (VS Code extension), model Claude Opus 5.5, in one session that had
-earlier been used for a different YottaFlex task (an API ingestion pipeline). This project used
-three prompts to build it and three short ones to publish it (see prompt-history).
+earlier been used for a different YottaFlex task (an API ingestion pipeline). The prompt
+files in [prompt-history](../prompt-history/) are polished editorial reconstructions of the
+project scope, not verbatim chat transcripts. The original interaction was shorter.
 
 **Level of reliance: high.** The candidate supplied the brief and the instruction to build
 and publish it. The assistant designed and wrote all of the source code, tests,
