@@ -1,0 +1,33 @@
+[project]
+name = "plantsim"
+version = "1.0.0"
+description = "Synthetic plant hydraulics: pumps, tanks, valves, pipes and sensors with fault injection, detection and evaluation"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []  # standard library only
+
+[project.scripts]
+plantsim = "plantsim.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/plantsim"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+# Closures in masterdata/detector are called inside the same loop iteration.
+ignore = ["B023"]
