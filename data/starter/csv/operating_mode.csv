@@ -1,0 +1,13 @@
+mode_id,facility_id,mode_code,description,demand_factor,maintenance_pump_id,effective_from,effective_to
+MODE-001,FAC-001,NORMAL,Design operation,1.0,,2026-01-01,
+MODE-002,FAC-001,HIGH_DEMAND,"Peak demand, pumps at full speed",1.3,,2026-01-01,
+MODE-003,FAC-001,LOW_DEMAND,"Night/low demand, reduced speed and inlet throttled",0.7,,2026-01-01,
+MODE-004,FAC-001,MAINTENANCE,PUMP-007 isolated for maintenance,0.9,PUMP-007,2026-01-01,
+MODE-005,FAC-002,NORMAL,Design operation,1.0,,2026-01-01,
+MODE-006,FAC-002,HIGH_DEMAND,"Peak demand, pumps at full speed",1.3,,2026-01-01,
+MODE-007,FAC-002,LOW_DEMAND,"Night/low demand, reduced speed and inlet throttled",0.7,,2026-01-01,
+MODE-008,FAC-002,MAINTENANCE,PUMP-008 isolated for maintenance,0.9,PUMP-008,2026-01-01,
+MODE-009,FAC-003,NORMAL,Design operation,1.0,,2026-01-01,
+MODE-010,FAC-003,HIGH_DEMAND,"Peak demand, pumps at full speed",1.3,,2026-01-01,
+MODE-011,FAC-003,LOW_DEMAND,"Night/low demand, reduced speed and inlet throttled",0.7,,2026-01-01,
+MODE-012,FAC-003,MAINTENANCE,PUMP-020 isolated for maintenance,0.9,PUMP-020,2026-01-01,

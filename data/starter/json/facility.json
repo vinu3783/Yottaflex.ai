@@ -1,0 +1,5 @@
+[
+  {"facility_id": "FAC-001", "name": "North Water Treatment Works", "facility_type": "WATER_TREATMENT", "region": "North", "timezone": "UTC", "commissioned_date": "2015-07-14", "status": "ACTIVE"},
+  {"facility_id": "FAC-002", "name": "East Process Plant", "facility_type": "PROCESS_PLANT", "region": "East", "timezone": "UTC", "commissioned_date": "2019-11-19", "status": "ACTIVE"},
+  {"facility_id": "FAC-003", "name": "South Utility Plant", "facility_type": "UTILITY", "region": "South", "timezone": "UTC", "commissioned_date": "2019-11-28", "status": "ACTIVE"}
+]

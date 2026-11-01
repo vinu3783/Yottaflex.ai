@@ -1,0 +1,330 @@
+{
+  "dataset": "plantsim synthetic plant hydraulics",
+  "generator_version": "1.0.0",
+  "model_version": "plantsim-hydraulic-1.0",
+  "profile": "starter",
+  "seed": 20261022,
+  "telemetry_points": 10000,
+  "steps_per_run": 20,
+  "command": "plantsim generate --profile starter --seed 20261022",
+  "reference_date": "2026-10-22",
+  "provenance": {
+    "source": "fully synthetic, produced by this generator",
+    "external_data": "none",
+    "personal_data": "none",
+    "reference_knowledge": [
+      "Darcy-Weisbach pipe friction (textbook fluid mechanics)",
+      "Centrifugal pump affinity laws (textbook)",
+      "Valve flow coefficient Kv definition (IEC 60534 concept, no text reproduced)"
+    ],
+    "license": "MIT (same as the code)"
+  },
+  "files": [
+    {
+      "path": "csv/alarm.csv",
+      "rows": 19,
+      "bytes": 4730,
+      "sha256": "6d016f13a320d97d5761bbbb14f93127d4831d222448845c7cb82a443f5727e0"
+    },
+    {
+      "path": "csv/alarm_event.csv",
+      "rows": 26,
+      "bytes": 1620,
+      "sha256": "e52ea384d7a9c6025c16018a836be116e8210fc344892567b52e96c0be95bc45"
+    },
+    {
+      "path": "csv/alarm_review.csv",
+      "rows": 2,
+      "bytes": 316,
+      "sha256": "5ccdeb8e18fe9ee5d38fa1d7be7f96fd70afc0707368f55ac1e9904fdd8738b4"
+    },
+    {
+      "path": "csv/component_status_event.csv",
+      "rows": 654,
+      "bytes": 50860,
+      "sha256": "d77c3fc778ae6e820855563f3cd0e9bd8e2354ea2bccab3de137825020febbf5"
+    },
+    {
+      "path": "csv/facility.csv",
+      "rows": 3,
+      "bytes": 284,
+      "sha256": "19045761aafac3723832ed84f7eacdb049583fef83105c9e7663359c7d71085c"
+    },
+    {
+      "path": "csv/node.csv",
+      "rows": 110,
+      "bytes": 2570,
+      "sha256": "277ff3612784196ecbbc8a132cc2022d7584e9d7e9f7630be165c42d73673728"
+    },
+    {
+      "path": "csv/operating_mode.csv",
+      "rows": 12,
+      "bytes": 1082,
+      "sha256": "89ec3f43973f56d010b24620e2f930a5e4152aa0ae6949041bdca273a1980212"
+    },
+    {
+      "path": "csv/operating_mode_pump_setting.csv",
+      "rows": 80,
+      "bytes": 2337,
+      "sha256": "dff2c9fac38b08ddacc7d6bbbae952205edd94a9ab0c827d30554ca5653e6a11"
+    },
+    {
+      "path": "csv/operating_mode_valve_setting.csv",
+      "rows": 240,
+      "bytes": 7253,
+      "sha256": "ba2b1e858838cd119976cc0eb40c95d4e9019ce7060b0771fabe1780e7435103"
+    },
+    {
+      "path": "csv/pipe.csv",
+      "rows": 108,
+      "bytes": 9169,
+      "sha256": "0ac6edeffae05098ed40f3089da922b698a32fc173c6f85838dbd8cf1df242e4"
+    },
+    {
+      "path": "csv/pump.csv",
+      "rows": 20,
+      "bytes": 2077,
+      "sha256": "232739fde5773f13f2faf431b797105ee76171b91f0daaa6309aa1daef57b96e"
+    },
+    {
+      "path": "csv/pump_state_event.csv",
+      "rows": 198,
+      "bytes": 14846,
+      "sha256": "e72ef4932899265059bc7413e0ad623b3fee4ff8a15c1b3fdba88bed43224825"
+    },
+    {
+      "path": "csv/sensor.csv",
+      "rows": 100,
+      "bytes": 8972,
+      "sha256": "00dbcf272249d03ab1bdf51a85a9c71deaa71738305caf52defb9f393fb06b2b"
+    },
+    {
+      "path": "csv/simulation_assumption.csv",
+      "rows": 14,
+      "bytes": 1209,
+      "sha256": "9f144d7b48606fc18c19e2bb046e25bde819ee1ea5830e1b4c54625d4be206fb"
+    },
+    {
+      "path": "csv/simulation_run.csv",
+      "rows": 16,
+      "bytes": 24713,
+      "sha256": "ff672cfc403ae1fba6f4bc1bc235dedfc97e74291f87ade13829d049e3d4bee9"
+    },
+    {
+      "path": "csv/simulation_run_assumption.csv",
+      "rows": 210,
+      "bytes": 5072,
+      "sha256": "ad0647eeb2a700792095ebe7b2fbe832d1d27003d2cb06651d63b1dc93795577"
+    },
+    {
+      "path": "csv/simulation_run_mode_segment.csv",
+      "rows": 32,
+      "bytes": 2445,
+      "sha256": "d40d3f1f1f35231a5929fa4eb14d7dc2e17caba28d16cdf0328c2bd3cdcbade5"
+    },
+    {
+      "path": "csv/tank.csv",
+      "rows": 30,
+      "bytes": 2490,
+      "sha256": "734e3c05d9022dea0ca8fbe8b5865feb504b96eba8d5eecfa4471588fa40d759"
+    },
+    {
+      "path": "csv/telemetry.csv",
+      "rows": 10000,
+      "bytes": 744095,
+      "sha256": "390979a1bffd3f65b28a950ed876f1028216d0f352457681269a7d4d8f601781"
+    },
+    {
+      "path": "csv/valve.csv",
+      "rows": 60,
+      "bytes": 4176,
+      "sha256": "3921584a80795487912f3d0d343abdda732db860adf38dfb90b34753c5262d58"
+    },
+    {
+      "path": "csv/valve_state_event.csv",
+      "rows": 316,
+      "bytes": 25306,
+      "sha256": "f342c22ef31c15832f5ea50658cb94e5434814d52ce99c050ef6e685c92d1070"
+    },
+    {
+      "path": "ground_truth/ground_truth.csv",
+      "rows": 28,
+      "bytes": 5966,
+      "sha256": "ee566722843ebde7b6ad72d494e96af2ba60c46496b65de9bc64f38c2746837b"
+    },
+    {
+      "path": "ground_truth/ground_truth.json",
+      "rows": null,
+      "bytes": 26623,
+      "sha256": "a75aff2a4706d87769d06ad0e5aa3ee303ce71ce157b9e63deb148674f368b5b"
+    },
+    {
+      "path": "json/alarm.json",
+      "rows": null,
+      "bytes": 11009,
+      "sha256": "bf0c59daea59373ad0b89f573ec4104e6ee28ad9a2a13cdf3e220152f031fa86"
+    },
+    {
+      "path": "json/alarm_event.json",
+      "rows": null,
+      "bytes": 4101,
+      "sha256": "52c38faa55ca318fb18406c8a96997eeeefd1537d58a12539639df94a68b553f"
+    },
+    {
+      "path": "json/alarm_review.json",
+      "rows": null,
+      "bytes": 448,
+      "sha256": "f98621f40790e929c25f806a969deb214569c2b37deeca60610757de596bc1dd"
+    },
+    {
+      "path": "json/component_status_event.json",
+      "rows": null,
+      "bytes": 169097,
+      "sha256": "0ddad5f35a18596dbb7a66272ef0d6815c538214a7f0863e4f35ed9a838be5cc"
+    },
+    {
+      "path": "json/facility.json",
+      "rows": null,
+      "bytes": 569,
+      "sha256": "6bb4b0b4edbf62f7e43ae6ac1fe4b94d99e113f126a4dc7861bfa93bab00c830"
+    },
+    {
+      "path": "json/node.json",
+      "rows": null,
+      "bytes": 8263,
+      "sha256": "8e8a7e41353fe8eecc2f84c94ce08b19c8f0d779e6b3cd06cecd6f8e2d9c643f"
+    },
+    {
+      "path": "json/operating_mode.json",
+      "rows": null,
+      "bytes": 2859,
+      "sha256": "8f58fe6ac262a50ac41ff1e6c3d6f868ffc95bb50f3cd6e11b797b64a389bd68"
+    },
+    {
+      "path": "json/operating_mode_pump_setting.json",
+      "rows": null,
+      "bytes": 6946,
+      "sha256": "5da3ed572d64be7c3614326e6c512623b42d801a0aa8bfaaf03983fe673b5de6"
+    },
+    {
+      "path": "json/operating_mode_valve_setting.json",
+      "rows": null,
+      "bytes": 23295,
+      "sha256": "1c65373837293dcb61422fc7eb52deeddb78788a4ef31f009eb415486876dd4d"
+    },
+    {
+      "path": "json/pipe.json",
+      "rows": null,
+      "bytes": 29023,
+      "sha256": "e51311b79b458e37b17a7fb29b726b63f44d3d80b63a2e07a29f52a875193c74"
+    },
+    {
+      "path": "json/pump.json",
+      "rows": null,
+      "bytes": 6499,
+      "sha256": "6a43a8047f61b920d41d8a48ebacab1e2cc01d38d9a9b1ed676426357ccf4468"
+    },
+    {
+      "path": "json/pump_state_event.json",
+      "rows": null,
+      "bytes": 37750,
+      "sha256": "9566781a38d2f4593959cc7516abda930e0351111b651943c5429ad6226b2179"
+    },
+    {
+      "path": "json/sensor.json",
+      "rows": null,
+      "bytes": 33011,
+      "sha256": "5ec2677e32a34323681de1c07e86f9a6376c866c7a04bcc8da56abd3df95458d"
+    },
+    {
+      "path": "json/simulation_assumption.json",
+      "rows": null,
+      "bytes": 2290,
+      "sha256": "42d86deaf2e7bc8e34c134a9c03e0b1e837ad8b1bacbe2d92ae908330aba8d7b"
+    },
+    {
+      "path": "json/simulation_run.json",
+      "rows": null,
+      "bytes": 28376,
+      "sha256": "29715e676194ff287cb6d355ed9c326848cd886d4c41ee74bef6530e0fb84365"
+    },
+    {
+      "path": "json/simulation_run_assumption.json",
+      "rows": null,
+      "bytes": 15123,
+      "sha256": "5f06f2db1786e52be4d18bb61c0c2310c7008a7fb5838df1c2a30e2978fa28de"
+    },
+    {
+      "path": "json/simulation_run_mode_segment.json",
+      "rows": null,
+      "bytes": 6022,
+      "sha256": "6d24caa97c3716503c5435e6f93c8e8bd89cf7082d7f036b53afd46c70d7f4eb"
+    },
+    {
+      "path": "json/tank.json",
+      "rows": null,
+      "bytes": 7742,
+      "sha256": "e1c6159d1e451ceca8d1e80e338787b02fa73cf409c2926858e486b8d25b43fe"
+    },
+    {
+      "path": "json/telemetry.json",
+      "rows": null,
+      "bytes": 1994021,
+      "sha256": "995029215ea1ae1b5036e47b5ebe5f6d4c4d24555b3deee56ae3dc2eb8aa7c6f"
+    },
+    {
+      "path": "json/valve.json",
+      "rows": null,
+      "bytes": 14160,
+      "sha256": "8f234fd428013d784f37694dd8e13058530df0c7328b14f962484e8d87adc155"
+    },
+    {
+      "path": "json/valve_state_event.json",
+      "rows": null,
+      "bytes": 76303,
+      "sha256": "3d1f274ac2bc22be68462ad72215f44403fbee7104d00132898444a81700556a"
+    },
+    {
+      "path": "reports/evaluation.json",
+      "rows": null,
+      "bytes": 8155,
+      "sha256": "0ced0c35d5619d3069eb1cf4fe5570fdc837e141748fb8a2dba836ce567fd880"
+    },
+    {
+      "path": "reports/evaluation.md",
+      "rows": null,
+      "bytes": 3180,
+      "sha256": "9f4fb1069d59ec38e68c4753550fe6478cf80470d3cd71cc32589aa58c7088cc"
+    },
+    {
+      "path": "reports/sql_load_report.json",
+      "rows": null,
+      "bytes": 1186,
+      "sha256": "ba2e4acb4f1c6cfad3017bc581b3fcd97b57da1816cb83b8bfa001a9abf0c928"
+    },
+    {
+      "path": "reports/validation_summary.json",
+      "rows": null,
+      "bytes": 7038,
+      "sha256": "08ec1495411f1939e96249448f50e585c0ef3fcd4764d3078b9dea00944ebfdb"
+    },
+    {
+      "path": "reports/validation_summary.md",
+      "rows": null,
+      "bytes": 3458,
+      "sha256": "317d434802a0a4035db55b79aa67147567c4ac54aadc327f715ddbbba51df984"
+    },
+    {
+      "path": "sql/schema.sql",
+      "rows": null,
+      "bytes": 14008,
+      "sha256": "5c8a64eb3dbef15bcd283ce93f14b94586f09161860dab423cf6e21a45011b63"
+    },
+    {
+      "path": "sql/seed.sql",
+      "rows": null,
+      "bytes": 1197503,
+      "sha256": "011de6be13ebaef3ac0d872bd642a7eb994fcda2389872a571eb74d42f659a89"
+    }
+  ]
+}

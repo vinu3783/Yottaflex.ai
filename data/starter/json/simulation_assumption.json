@@ -1,0 +1,16 @@
+[
+  {"assumption_id": "ASM-001", "category": "HYDRAULICS", "statement": "Flow is quasi-steady within each integration substep", "value": "60", "unit": "s"},
+  {"assumption_id": "ASM-002", "category": "HYDRAULICS", "statement": "Water density 1000 kg/m3 and g = 9.80665 m/s2", "value": "9.80665", "unit": "kPa/m"},
+  {"assumption_id": "ASM-003", "category": "PUMPS", "statement": "Quadratic pump curve H = H0*s^2 - k*Q^2 with affinity-law speed scaling", "value": null, "unit": null},
+  {"assumption_id": "ASM-004", "category": "PUMPS", "statement": "Efficiency is parabolic around the rated point (floor 20 %)", "value": "0.20", "unit": null},
+  {"assumption_id": "ASM-005", "category": "PIPES", "statement": "Darcy-Weisbach losses with a constant friction factor per pipe", "value": null, "unit": null},
+  {"assumption_id": "ASM-006", "category": "VALVES", "statement": "Kv sizing with a linear trim; 0 % opening blocks the flow", "value": null, "unit": null},
+  {"assumption_id": "ASM-007", "category": "VALVES", "statement": "Check valves prevent reverse flow on every transfer", "value": null, "unit": null},
+  {"assumption_id": "ASM-008", "category": "TANKS", "statement": "Vertical walls (volume = area x level); overflow above capacity is lost", "value": null, "unit": null},
+  {"assumption_id": "ASM-009", "category": "CONTROL", "statement": "Pumps start/stop on destination level at telemetry boundaries", "value": "0.45/0.85", "unit": "fill"},
+  {"assumption_id": "ASM-010", "category": "CONTROL", "statement": "Gravity and inlet control valves modulate on level every substep", "value": null, "unit": null},
+  {"assumption_id": "ASM-011", "category": "DEMAND", "statement": "Diurnal demand profile with one harmonic per outlet", "value": "0.25", "unit": "amplitude"},
+  {"assumption_id": "ASM-012", "category": "TELEMETRY", "statement": "Flow and pressure are interval means; level is the interval-end value", "value": "900", "unit": "s"},
+  {"assumption_id": "ASM-013", "category": "TELEMETRY", "statement": "Gaussian sensor noise; meters read 0 below the low-flow cut-off", "value": "0.5", "unit": "m3/h"},
+  {"assumption_id": "ASM-014", "category": "FAULTS", "statement": "Leaks occur downstream of the transfer flow meter and scale with flow", "value": null, "unit": null}
+]

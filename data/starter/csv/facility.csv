@@ -1,0 +1,4 @@
+facility_id,name,facility_type,region,timezone,commissioned_date,status
+FAC-001,North Water Treatment Works,WATER_TREATMENT,North,UTC,2015-07-14,ACTIVE
+FAC-002,East Process Plant,PROCESS_PLANT,East,UTC,2019-11-19,ACTIVE
+FAC-003,South Utility Plant,UTILITY,South,UTC,2019-11-28,ACTIVE

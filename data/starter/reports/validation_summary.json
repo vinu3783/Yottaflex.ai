@@ -1,0 +1,246 @@
+{
+  "overall_status": "PASS",
+  "summary": {
+    "EXPECTED_EXCEPTIONS": 5,
+    "PASS": 13
+  },
+  "row_counts": {
+    "facility": 3,
+    "node": 110,
+    "tank": 30,
+    "pump": 20,
+    "valve": 60,
+    "pipe": 108,
+    "sensor": 100,
+    "operating_mode": 12,
+    "operating_mode_valve_setting": 240,
+    "operating_mode_pump_setting": 80,
+    "simulation_assumption": 14,
+    "simulation_run": 16,
+    "simulation_run_assumption": 210,
+    "simulation_run_mode_segment": 32,
+    "telemetry": 10000,
+    "pump_state_event": 198,
+    "valve_state_event": 316,
+    "component_status_event": 654,
+    "alarm": 19,
+    "alarm_event": 26,
+    "alarm_review": 2
+  },
+  "checks": [
+    {
+      "check": "primary_key_unique",
+      "category": "INTEGRITY",
+      "description": "Primary keys are unique in every table",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "id_and_format",
+      "category": "INTEGRITY",
+      "description": "IDs follow the naming convention; dates/JSON parse",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "required_fields",
+      "category": "INTEGRITY",
+      "description": "Required fields are present",
+      "status": "EXPECTED_EXCEPTIONS",
+      "violations": 1,
+      "expected_labelled": 1,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": [
+        "simulation_run:SIM-2026-000016: seed is null",
+        "simulation_run:SIM-2026-000016: input_config_json is null",
+        "simulation_run:SIM-2026-000016: config_hash is null"
+      ]
+    },
+    {
+      "check": "allowed_values",
+      "category": "INTEGRITY",
+      "description": "Enumerations and numeric ranges",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "exclusive_references",
+      "category": "INTEGRITY",
+      "description": "Polymorphic references use exactly one FK",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "foreign_keys",
+      "category": "INTEGRITY",
+      "description": "Every foreign key resolves to an existing parent",
+      "status": "EXPECTED_EXCEPTIONS",
+      "violations": 1,
+      "expected_labelled": 1,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": [
+        "pipe:PIPE-108: to_node_id=TANK-031 not found in node"
+      ]
+    },
+    {
+      "check": "duplicates",
+      "category": "INTEGRITY",
+      "description": "No duplicate natural keys (e.g. one reading per sensor per time)",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "facility_consistency",
+      "category": "INTEGRITY",
+      "description": "Related records belong to the same facility",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "topology_dangling_pipes",
+      "category": "TOPOLOGY",
+      "description": "Every pipe connects two existing nodes",
+      "status": "EXPECTED_EXCEPTIONS",
+      "violations": 1,
+      "expected_labelled": 1,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": [
+        "pipe:PIPE-108: to_node_id not an existing node"
+      ]
+    },
+    {
+      "check": "topology_connected",
+      "category": "TOPOLOGY",
+      "description": "Each facility is one connected graph, tanks reachable from inlet",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "topology_roles",
+      "category": "TOPOLOGY",
+      "description": "Pumps/valves have the pipe counts their role requires",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "units_explicit",
+      "category": "UNITS",
+      "description": "Every reading carries its sensor's engineering unit",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "date_ordering",
+      "category": "DATES",
+      "description": "Dates are ordered and every timestamp falls inside its run",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "arithmetic_reconciliation",
+      "category": "DERIVED",
+      "description": "Derived values recomputed from their sources",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "run_reproducibility_inputs",
+      "category": "REPRODUCIBILITY",
+      "description": "Every run with outputs can be re-run",
+      "status": "EXPECTED_EXCEPTIONS",
+      "violations": 1,
+      "expected_labelled": 1,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": [
+        "simulation_run:SIM-2026-000016: has outputs but no input_config_json, config_hash, seed"
+      ]
+    },
+    {
+      "check": "lifecycle_transitions",
+      "category": "LIFECYCLE",
+      "description": "Allowed state transitions; status matches history",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    },
+    {
+      "check": "level_within_capacity",
+      "category": "PLAUSIBILITY",
+      "description": "Level readings never exceed tank height",
+      "status": "EXPECTED_EXCEPTIONS",
+      "violations": 6,
+      "expected_labelled": 6,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": [
+        "telemetry:TEL-0001670: level 5.974 m above tank height",
+        "telemetry:TEL-0008417: level 11.647 m above tank height",
+        "telemetry:TEL-0008490: level 6.453 m above tank height",
+        "telemetry:TEL-0008825: level 9.037 m above tank height",
+        "telemetry:TEL-0008983: level 5.941 m above tank height"
+      ]
+    },
+    {
+      "check": "ground_truth_separation",
+      "category": "LEAKAGE",
+      "description": "Labels only in ground_truth/, and every label points at a real record",
+      "status": "PASS",
+      "violations": 0,
+      "expected_labelled": 0,
+      "unexpected": [],
+      "labelled_not_found": [],
+      "examples": []
+    }
+  ]
+}

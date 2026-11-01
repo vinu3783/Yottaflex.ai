@@ -1,0 +1,15 @@
+assumption_id,category,statement,value,unit
+ASM-001,HYDRAULICS,Flow is quasi-steady within each integration substep,60,s
+ASM-002,HYDRAULICS,Water density 1000 kg/m3 and g = 9.80665 m/s2,9.80665,kPa/m
+ASM-003,PUMPS,Quadratic pump curve H = H0*s^2 - k*Q^2 with affinity-law speed scaling,,
+ASM-004,PUMPS,Efficiency is parabolic around the rated point (floor 20 %),0.20,
+ASM-005,PIPES,Darcy-Weisbach losses with a constant friction factor per pipe,,
+ASM-006,VALVES,Kv sizing with a linear trim; 0 % opening blocks the flow,,
+ASM-007,VALVES,Check valves prevent reverse flow on every transfer,,
+ASM-008,TANKS,Vertical walls (volume = area x level); overflow above capacity is lost,,
+ASM-009,CONTROL,Pumps start/stop on destination level at telemetry boundaries,0.45/0.85,fill
+ASM-010,CONTROL,Gravity and inlet control valves modulate on level every substep,,
+ASM-011,DEMAND,Diurnal demand profile with one harmonic per outlet,0.25,amplitude
+ASM-012,TELEMETRY,Flow and pressure are interval means; level is the interval-end value,900,s
+ASM-013,TELEMETRY,Gaussian sensor noise; meters read 0 below the low-flow cut-off,0.5,m3/h
+ASM-014,FAULTS,Leaks occur downstream of the transfer flow meter and scale with flow,,

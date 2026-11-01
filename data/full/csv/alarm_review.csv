@@ -1,0 +1,3 @@
+review_id,alarm_id,decision,supporting_alarm_ids,explanation
+ARV-0001,ALM-000001,CONFIRMED,ALM-000003,Detector raised LEAK_SUSPECTED on the same location.
+ARV-0002,ALM-000002,RECLASSIFY_AS_SENSOR_FAULT,ALM-000013,The imbalance at TANK-015 is explained by a fault on SNS-054; no process leak is needed to explain it.

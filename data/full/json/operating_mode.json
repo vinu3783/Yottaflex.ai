@@ -1,0 +1,14 @@
+[
+  {"mode_id": "MODE-001", "facility_id": "FAC-001", "mode_code": "NORMAL", "description": "Design operation", "demand_factor": 1.0, "maintenance_pump_id": null, "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-002", "facility_id": "FAC-001", "mode_code": "HIGH_DEMAND", "description": "Peak demand, pumps at full speed", "demand_factor": 1.3, "maintenance_pump_id": null, "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-003", "facility_id": "FAC-001", "mode_code": "LOW_DEMAND", "description": "Night/low demand, reduced speed and inlet throttled", "demand_factor": 0.7, "maintenance_pump_id": null, "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-004", "facility_id": "FAC-001", "mode_code": "MAINTENANCE", "description": "PUMP-007 isolated for maintenance", "demand_factor": 0.9, "maintenance_pump_id": "PUMP-007", "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-005", "facility_id": "FAC-002", "mode_code": "NORMAL", "description": "Design operation", "demand_factor": 1.0, "maintenance_pump_id": null, "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-006", "facility_id": "FAC-002", "mode_code": "HIGH_DEMAND", "description": "Peak demand, pumps at full speed", "demand_factor": 1.3, "maintenance_pump_id": null, "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-007", "facility_id": "FAC-002", "mode_code": "LOW_DEMAND", "description": "Night/low demand, reduced speed and inlet throttled", "demand_factor": 0.7, "maintenance_pump_id": null, "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-008", "facility_id": "FAC-002", "mode_code": "MAINTENANCE", "description": "PUMP-008 isolated for maintenance", "demand_factor": 0.9, "maintenance_pump_id": "PUMP-008", "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-009", "facility_id": "FAC-003", "mode_code": "NORMAL", "description": "Design operation", "demand_factor": 1.0, "maintenance_pump_id": null, "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-010", "facility_id": "FAC-003", "mode_code": "HIGH_DEMAND", "description": "Peak demand, pumps at full speed", "demand_factor": 1.3, "maintenance_pump_id": null, "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-011", "facility_id": "FAC-003", "mode_code": "LOW_DEMAND", "description": "Night/low demand, reduced speed and inlet throttled", "demand_factor": 0.7, "maintenance_pump_id": null, "effective_from": "2026-01-01", "effective_to": null},
+  {"mode_id": "MODE-012", "facility_id": "FAC-003", "mode_code": "MAINTENANCE", "description": "PUMP-020 isolated for maintenance", "demand_factor": 0.9, "maintenance_pump_id": "PUMP-020", "effective_from": "2026-01-01", "effective_to": null}
+]

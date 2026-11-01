@@ -1,0 +1,304 @@
+{
+  "headline": {
+    "fault_recall": 1.0,
+    "alarm_precision": 1.0,
+    "faults_detected": "11/11",
+    "false_alarms": 0,
+    "false_alarms_in_normal_runs": 0,
+    "mean_detection_delay_min": 193.6,
+    "edge_cases_handled": "5/5",
+    "data_quality_recall": 1.0,
+    "data_quality_precision": 1.0,
+    "dq_alarms_from_labelled_sensor_faults": 0
+  },
+  "faults": [
+    {
+      "simulation_run_id": "SIM-2026-000002",
+      "issue_type": "LEAK",
+      "component_id": "PIPE-017",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "LEAK_SUSPECTED",
+      "alarm_types_raised": [
+        "LEAK_SUSPECTED"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 90.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000003",
+      "issue_type": "BLOCKAGE",
+      "component_id": "PIPE-029",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "BLOCKAGE_SUSPECTED",
+      "alarm_types_raised": [
+        "BLOCKAGE_SUSPECTED"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 45.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000004",
+      "issue_type": "PUMP_DEGRADATION",
+      "component_id": "PUMP-001",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "PUMP_DEGRADATION",
+      "alarm_types_raised": [
+        "PUMP_DEGRADATION"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 315.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000005",
+      "issue_type": "SENSOR_STUCK",
+      "component_id": "SNS-002",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "LEVEL_SENSOR_FAULT",
+      "alarm_types_raised": [
+        "LEVEL_SENSOR_FAULT"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 75.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000007",
+      "issue_type": "LEAK",
+      "component_id": "PIPE-069",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "LEAK_SUSPECTED",
+      "alarm_types_raised": [
+        "LEAK_SUSPECTED"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 105.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000008",
+      "issue_type": "BLOCKAGE",
+      "component_id": "PIPE-047",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "BLOCKAGE_SUSPECTED",
+      "alarm_types_raised": [
+        "BLOCKAGE_SUSPECTED"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 60.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000009",
+      "issue_type": "PUMP_DEGRADATION",
+      "component_id": "PUMP-012",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "PUMP_DEGRADATION",
+      "alarm_types_raised": [
+        "PUMP_DEGRADATION"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 255.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000010",
+      "issue_type": "SENSOR_BIAS",
+      "component_id": "SNS-054",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "FLOW_SENSOR_FAULT",
+      "alarm_types_raised": [
+        "FLOW_SENSOR_FAULT"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 315.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000012",
+      "issue_type": "LEAK",
+      "component_id": "PIPE-095",
+      "expected_decision": "NO_ALARM",
+      "expected_alarm_type": null,
+      "alarm_types_raised": [],
+      "detected": false,
+      "outcome": "TRUE_NEGATIVE",
+      "delay_min": null
+    },
+    {
+      "simulation_run_id": "SIM-2026-000013",
+      "issue_type": "BLOCKAGE",
+      "component_id": "PIPE-077",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "BLOCKAGE_SUSPECTED",
+      "alarm_types_raised": [
+        "BLOCKAGE_SUSPECTED"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 315.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000014",
+      "issue_type": "PUMP_DEGRADATION",
+      "component_id": "PUMP-016",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "PUMP_DEGRADATION",
+      "alarm_types_raised": [
+        "PUMP_DEGRADATION"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 435.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000015",
+      "issue_type": "SENSOR_DRIFT",
+      "component_id": "SNS-076",
+      "expected_decision": "ALARM",
+      "expected_alarm_type": "LEVEL_SENSOR_FAULT",
+      "alarm_types_raised": [
+        "LEVEL_SENSOR_FAULT"
+      ],
+      "detected": true,
+      "outcome": "TRUE_POSITIVE",
+      "delay_min": 120.0
+    }
+  ],
+  "per_alarm_type": {
+    "BLOCKAGE_SUSPECTED": {
+      "faults": 3,
+      "detected": 3,
+      "alarms_raised": 3,
+      "correct_alarms": 3,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "FLOW_SENSOR_FAULT": {
+      "faults": 1,
+      "detected": 1,
+      "alarms_raised": 1,
+      "correct_alarms": 1,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "LEAK_SUSPECTED": {
+      "faults": 2,
+      "detected": 2,
+      "alarms_raised": 2,
+      "correct_alarms": 2,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "LEVEL_SENSOR_FAULT": {
+      "faults": 2,
+      "detected": 2,
+      "alarms_raised": 2,
+      "correct_alarms": 2,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "PUMP_DEGRADATION": {
+      "faults": 3,
+      "detected": 3,
+      "alarms_raised": 3,
+      "correct_alarms": 3,
+      "recall": 1.0,
+      "precision": 1.0
+    }
+  },
+  "false_alarm_details": [],
+  "false_alarm_rate_per_day_normal": 0.0,
+  "edge_cases": [
+    {
+      "edge_case": "Pipe references missing node",
+      "records": [
+        "PIPE-108"
+      ],
+      "handled": true,
+      "how": "foreign_keys + topology_dangling_pipes flag it; SQL load moves it to rejected_record; topology builder ignores it"
+    },
+    {
+      "edge_case": "Tank level exceeds capacity",
+      "records": [
+        "TEL-0019623",
+        "TEL-0038003",
+        "TEL-0055223",
+        "TEL-0068624",
+        "TEL-0083573",
+        "TEL-0086872"
+      ],
+      "handled": true,
+      "how": "DQ-001 raised 6/6 alarms; validation level_within_capacity lists exactly these readings"
+    },
+    {
+      "edge_case": "Flow conservation violated beyond tolerance",
+      "records": [
+        "TANK-006",
+        "TANK-020",
+        "TANK-027"
+      ],
+      "handled": true,
+      "how": "MB-001 detected 2/2 violations above tolerance and stayed silent on 1/1 within-tolerance case(s)"
+    },
+    {
+      "edge_case": "Simulation output lacks input configuration",
+      "records": [
+        "SIM-2026-000016"
+      ],
+      "handled": true,
+      "how": "required_fields + run_reproducibility_inputs flag it; detector skips it; SQL rejects it"
+    },
+    {
+      "edge_case": "Sensor fault labelled as process fault",
+      "records": [
+        "ALM-000002"
+      ],
+      "handled": true,
+      "how": "alarm_review reclassifies the operator LEAK alarm because the detector attributes the imbalance to a flow-meter fault (SNS-003)"
+    }
+  ],
+  "operator_alarm_reviews": [
+    {
+      "alarm_id": "ALM-000001",
+      "issue_type": "OPERATOR_ALARM_CORRECT",
+      "expected": "CONFIRMED",
+      "got": "CONFIRMED",
+      "correct": true
+    },
+    {
+      "alarm_id": "ALM-000002",
+      "issue_type": "SENSOR_FAULT_LABELLED_AS_PROCESS_FAULT",
+      "expected": "RECLASSIFY_AS_SENSOR_FAULT",
+      "got": "RECLASSIFY_AS_SENSOR_FAULT",
+      "correct": true
+    }
+  ],
+  "mass_balance_normal_runs": [
+    {
+      "simulation_run_id": "SIM-2026-000001",
+      "measured_residual_pct": 0.044,
+      "true_balance_error_m3": 0.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000006",
+      "measured_residual_pct": -0.009,
+      "true_balance_error_m3": 0.0
+    },
+    {
+      "simulation_run_id": "SIM-2026-000011",
+      "measured_residual_pct": -0.009,
+      "true_balance_error_m3": 0.0
+    }
+  ],
+  "alarm_counts": {
+    "BLOCKAGE_SUSPECTED": 3,
+    "DQ_LEVEL_EXCEEDS_CAPACITY": 6,
+    "FLOW_SENSOR_FAULT": 1,
+    "LEAK_SUSPECTED": 2,
+    "LEVEL_SENSOR_FAULT": 2,
+    "PUMP_DEGRADATION": 3
+  }
+}

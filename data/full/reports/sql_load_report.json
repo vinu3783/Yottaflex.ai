@@ -1,0 +1,47 @@
+{
+  "loaded": {
+    "facility": 3,
+    "node": 110,
+    "tank": 30,
+    "pump": 20,
+    "valve": 60,
+    "pipe": 107,
+    "sensor": 100,
+    "operating_mode": 12,
+    "operating_mode_valve_setting": 240,
+    "operating_mode_pump_setting": 80,
+    "simulation_assumption": 14,
+    "simulation_run": 15,
+    "simulation_run_assumption": 210,
+    "simulation_run_mode_segment": 32,
+    "telemetry": 100000,
+    "pump_state_event": 1174,
+    "valve_state_event": 316,
+    "component_status_event": 652,
+    "alarm": 19,
+    "alarm_event": 27,
+    "alarm_review": 2
+  },
+  "rejected": [
+    {
+      "table_name": "pipe",
+      "record_key": "PIPE-108",
+      "reason": "FOREIGN KEY violated: to_node_id=TANK-031 not in node"
+    },
+    {
+      "table_name": "simulation_run",
+      "record_key": "SIM-2026-000016",
+      "reason": "NOT NULL violated: seed"
+    },
+    {
+      "table_name": "component_status_event",
+      "record_key": "CSE-000653",
+      "reason": "FOREIGN KEY violated: pipe_id=PIPE-108 not in pipe"
+    },
+    {
+      "table_name": "component_status_event",
+      "record_key": "CSE-000654",
+      "reason": "FOREIGN KEY violated: pipe_id=PIPE-108 not in pipe"
+    }
+  ]
+}

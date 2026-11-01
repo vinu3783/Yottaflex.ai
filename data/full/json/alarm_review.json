@@ -1,0 +1,4 @@
+[
+  {"review_id": "ARV-0001", "alarm_id": "ALM-000001", "decision": "CONFIRMED", "supporting_alarm_ids": "ALM-000003", "explanation": "Detector raised LEAK_SUSPECTED on the same location."},
+  {"review_id": "ARV-0002", "alarm_id": "ALM-000002", "decision": "RECLASSIFY_AS_SENSOR_FAULT", "supporting_alarm_ids": "ALM-000013", "explanation": "The imbalance at TANK-015 is explained by a fault on SNS-054; no process leak is needed to explain it."}
+]
