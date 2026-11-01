@@ -201,3 +201,9 @@ or proprietary sources were used. The physics comes from textbook relations
 
 AI assistance is disclosed in [docs/AI_USAGE.md](docs/AI_USAGE.md), and the prompts are in
 [prompt-history/](prompt-history/).
+
+## Author
+
+**Vinayaka G C** ([@vinu3783](https://github.com/vinu3783)) · vinayakagc210@gmail.com
+
+Sole author and contributor of this repository, built as a YottaFlex AI candidate project.
