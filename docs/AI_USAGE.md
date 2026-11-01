@@ -61,7 +61,14 @@ keys; and a standard-library-only implementation.
 - [x] Ran `plantsim repro-check` and `plantsim whatif` myself.
 - [x] Reviewed the design decisions and limitations and agree with them (or noted changes below).
 - [x] Checked that the repository contains no secrets or personal data.
-- [x] Own changes (describe, or "none"): none to the code; chose to publish this project in place of the earlier repository.
+- [x] Own changes (describe, or "none"): no direct edits to the code. My decisions were:
+  - supplied the brief and asked for a complete, tested build;
+  - set the commit identity and required that every commit be authored by me only, with no
+    AI co-author lines;
+  - asked for an Author section in the README;
+  - chose to publish this project in place of my earlier `Yottaflex.ai` repository (the old
+    project is kept as a local backup);
+  - reviewed the result and completed this checklist.
 
 Notes:
 
